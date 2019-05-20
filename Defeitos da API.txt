@@ -1,0 +1,5 @@
+# Erros diversos encontrados na API
+
+* Os métodos "2.2.1 Consulta Estrutura Organizacional Resumida" resumido e completo não retornam nada, pois permanecem em execução indefinidamente.
+
+* O método "Consulta Orgãos e Entidades - Resumida" (http://estruturaorganizacional.dados.gov.br/doc/orgao-entidade) está com erro de CORS. Erro: TypeError: Origin http://localhost:9000 is not allowed by Access-Control-Allow-Origin.
