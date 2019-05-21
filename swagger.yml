@@ -30,6 +30,10 @@ de acordo com os parâmetros."
   description: "Retorna o primeiro nível abaixo da estrutura organizacional de uma unidade organizacional. Se
                 escolher retornar órgão e entidades vinculadas retorna as unidades organizacionais filhas e o topo do
                 órgão e entidade vinculados."
+- name: "Consulta Estrutura Unidade Organizacional"
+  description: "Retorna apenas a informação da hierarquia da estrutura abaixo da unidade organizacional
+                pesquisada. Para descobrir o órgão topo de um “Poder” e “esfera” pode-se utilizar a consulta Consulta
+                Estrutura Organizacional Resumida"
 schemes:
 - "http"
 paths:
@@ -249,6 +253,11 @@ paths:
           type: "integer"
           description: "Código da Unidade Organizacional"
           required: true
+        - in: "query"
+          name: "retornarOrgaoEntidadeVinculados"
+          scheme:
+          type: "string"
+          enum: ["NAO" , "SIM"] 
         responses:
           200:
             description: OK
