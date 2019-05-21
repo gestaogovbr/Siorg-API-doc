@@ -216,6 +216,8 @@ paths:
         responses:
           200:
             description: OK
+          102:
+            description: Unidade Organizacional não encontrado(a).
   /unidade-organizacional/endereco-contato/{codigoUnidade}:
       get:
         tags:
@@ -258,6 +260,33 @@ paths:
           scheme:
           type: "string"
           enum: ["NAO" , "SIM"] 
+        responses:
+          200:
+            description: OK
+          102:
+            description: Unidade Organizacional não encontrado(a).
+  /unidade-organizacional/{codigoUnidade}/estrutura:
+      get:
+        tags:
+        - "Consulta Estrutura Unidade Organizacional"
+        summary: "Consulta Estrutura Unidade Organizacional"
+        operationId: "EstruturaUnidadeOrganizacional"
+        produces:
+          - "application/json"
+          - "application/xml"
+          - "text/csv"
+        parameters:
+        - in: "path"
+          name: "codigoUnidade"
+          type: "integer"
+          description: "Código da Unidade Organizacional"
+          required: true
+        - in: "query"
+          name: "versaoConsulta"
+          description: "Versão específica da Unidade
+                        Organizacional, se não informado
+                        retorna versão atual da unidade."
+          type: "string"
         responses:
           200:
             description: OK
