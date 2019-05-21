@@ -34,9 +34,13 @@ de acordo com os parâmetros."
   description: "Retorna apenas a informação da hierarquia da estrutura abaixo da unidade organizacional
                 pesquisada. Para descobrir o órgão topo de um “Poder” e “esfera” pode-se utilizar a consulta Consulta
                 Estrutura Organizacional Resumida"
+- name: "Consulta Integrantes Colegiado"
+  description: "Retorna os dados das unidades organizacionais ou não governamentais que compõem a
+                unidade colegiada."
 schemes:
 - "http"
 paths:
+
   /estrutura-organizacional:
     get:
       tags:
@@ -85,210 +89,267 @@ paths:
           description: CodigoUnidade não encontrado(a).
         104:
           description: Unidade organizacional deve ser um órgão ou entidade
+
+
   /estrutura-organizacional/completa:
-      get:
-        tags:
-        - "Consulta Estrutura Organizacional"
-        summary: "Consulta Estrutura Organizacional Completa"
-        description: "Retorna os dados completos de todas as unidades da estrutura organizacional do governo. Esse
-                      serviço retorna toda a estrutura do governo de forma completa.
-                      Caso seja utilizado o “CodigoUnidade” retorna os dados completos de um órgão ou entidade do
-                      governo. Todas as unidades organizacionais do órgão ou entidade são retornados. Se desejar que os
-                      órgãos e entidades vinculadas sejam retornadas deve-se informar no parâmetro de
-                      “RetornarOrgaoEntidadeVinculados” em conjunto com o “CodigoUnidade” e todas as unidadesMP
-                      SEGEP
-                      organizacionais dos órgãos e entidades vinculadas são retornados também. Se for passado
-                      “RetornarOrgaoEntidadeVinculados” deve-se passar o parâmetro de “CodigoUnidade” também."
-        operationId: "EstruturaOrganizacionalCompleta"
-        produces:
-          - "application/json"
-          - "application/xml"
-          - "text/csv"
-        parameters:
-        - in: "query"
-          name: "CodigoPoder"
-          description: "Código do Poder"
-          type: "integer"
-        - in: "query"
-          name: "CodigoEsfera"
-          description: "Código da Esfera"
-          type: "integer"
-        - in: "query"
-          name: "CodigoUnidade"
-          description: "Código da Unidade Organizacional somente do tipo Órgão ou Entidade"
-          type: "integer"      
-        - in: "query"
-          name: "RetornarOrgaoEntidadeVinculados"
-          description: "Parâmetro para escolher **SIM** se
-                        retorna os órgãos vinculados ou
-                        **NAO** para não retornar. Caso o
-                        parâmetro não seja informado o
-                        resultado não retornará os órgãos e
-                        entidades vinculadas."
-          type: "string"
-          enum: ["NAO" , "SIM"]     
-        responses:
-          200:
-            description: OK
-          102:
-            description: CodigoUnidade não encontrado(a).
-          104:
-            description: Unidade organizacional deve ser um órgão ou entidade 2.2.3.4 URIs exemplificativas
+    get:
+      tags:
+      - "Consulta Estrutura Organizacional"
+      summary: "Consulta Estrutura Organizacional Completa"
+      description: "Retorna os dados completos de todas as unidades da estrutura organizacional do governo. Esse
+                    serviço retorna toda a estrutura do governo de forma completa.
+                    Caso seja utilizado o “CodigoUnidade” retorna os dados completos de um órgão ou entidade do
+                    governo. Todas as unidades organizacionais do órgão ou entidade são retornados. Se desejar que os
+                    órgãos e entidades vinculadas sejam retornadas deve-se informar no parâmetro de
+                    “RetornarOrgaoEntidadeVinculados” em conjunto com o “CodigoUnidade” e todas as unidadesMP
+                    SEGEP
+                    organizacionais dos órgãos e entidades vinculadas são retornados também. Se for passado
+                    “RetornarOrgaoEntidadeVinculados” deve-se passar o parâmetro de “CodigoUnidade” também."
+      operationId: "EstruturaOrganizacionalCompleta"
+      produces:
+        - "application/json"
+        - "application/xml"
+        - "text/csv"
+      parameters:
+      - in: "query"
+        name: "CodigoPoder"
+        description: "Código do Poder"
+        type: "integer"
+      - in: "query"
+        name: "CodigoEsfera"
+        description: "Código da Esfera"
+        type: "integer"
+      - in: "query"
+        name: "CodigoUnidade"
+        description: "Código da Unidade Organizacional somente do tipo Órgão ou Entidade"
+        type: "integer"      
+      - in: "query"
+        name: "RetornarOrgaoEntidadeVinculados"
+        description: "Parâmetro para escolher **SIM** se
+                      retorna os órgãos vinculados ou
+                      **NAO** para não retornar. Caso o
+                      parâmetro não seja informado o
+                      resultado não retornará os órgãos e
+                      entidades vinculadas."
+        type: "string"
+        enum: ["NAO" , "SIM"]     
+      responses:
+        200:
+          description: OK
+        102:
+          description: CodigoUnidade não encontrado(a).
+        104:
+          description: Unidade organizacional deve ser um órgão ou entidade 2.2.3.4 URIs exemplificativas
+  
+  
   /orgao-entidade:
-      get:
-        tags:
-        - "Consulta Orgãos e Entidades"
-        summary: "Consulta Orgãos e Entidades Resumida"
-        description: "Retorna os dados resumidos de todos as unidades organizacionais que tem o tipo órgão ou entidade
-                      de acordo com os parâmetros. Esse serviço não retorna outras unidades organizacionais que não sejam
-                      do tipo órgão ou entidade. Caso um órgão ou entidade esteja vinculada a uma unidade organizacional
-                      com tipo diferente de 'Órgão' ou 'Entidade' essa unidade estará no resultado apenas para manter a
-                      estrutura organizacional correta do órgão."
-        operationId: "OrgaosEntidadesResumida"
-        produces:
-          - "application/json"
-          - "application/xml"
-          - "text/csv"
-        parameters:
-        - in: "query"
-          name: "CodigoPoder"
-          description: "Código do Poder"
-          type: "integer"
-        - in: "query"
-          name: "CodigoEsfera"
-          description: "Código da Esfera"
-          type: "integer"
-        responses:
-          200:
-            description: OK
+    get:
+      tags:
+      - "Consulta Orgãos e Entidades"
+      summary: "Consulta Orgãos e Entidades Resumida"
+      description: "Retorna os dados resumidos de todos as unidades organizacionais que tem o tipo órgão ou entidade
+                    de acordo com os parâmetros. Esse serviço não retorna outras unidades organizacionais que não sejam
+                    do tipo órgão ou entidade. Caso um órgão ou entidade esteja vinculada a uma unidade organizacional
+                    com tipo diferente de 'Órgão' ou 'Entidade' essa unidade estará no resultado apenas para manter a
+                    estrutura organizacional correta do órgão."
+      operationId: "OrgaosEntidadesResumida"
+      produces:
+        - "application/json"
+        - "application/xml"
+        - "text/csv"
+      parameters:
+      - in: "query"
+        name: "CodigoPoder"
+        description: "Código do Poder"
+        type: "integer"
+      - in: "query"
+        name: "CodigoEsfera"
+        description: "Código da Esfera"
+        type: "integer"
+      responses:
+        200:
+          description: OK
+
+
   /orgao-entidade/completa:
-      get:
-        tags:
-        - "Consulta Orgãos e Entidades"
-        summary: "Consulta Órgãos e Entidades Completo"
-        description: "Retorna os dados completos de todos as unidades organizacionais que tem o tipo órgão ou entidade
-                      de acordo com os parâmetros. Esse serviço não retorna outras unidades organizacionais que não sejam
-                      do tipo órgão ou entidade. Caso um órgão ou entidade esteja vinculada a uma unidade organizacional
-                      com tipo diferente de 'Órgão' ou 'Entidade' essa unidade estará no resultado apenas para manter a
-                      estrutura organizacional correta do órgão."
-        operationId: "OrgaosEntidadesCompleta"
-        produces:
-          - "application/json"
-          - "application/xml"
-          - "text/csv"
-        parameters:
-        - in: "query"
-          name: "CodigoPoder"
-          description: "Código do Poder"
-          type: "integer"
-        - in: "query"
-          name: "CodigoEsfera"
-          description: "Código da Esfera"
-          type: "integer"
-        responses:
-          200:
-            description: OK
+    get:
+      tags:
+      - "Consulta Orgãos e Entidades"
+      summary: "Consulta Órgãos e Entidades Completo"
+      description: "Retorna os dados completos de todos as unidades organizacionais que tem o tipo órgão ou entidade
+                    de acordo com os parâmetros. Esse serviço não retorna outras unidades organizacionais que não sejam
+                    do tipo órgão ou entidade. Caso um órgão ou entidade esteja vinculada a uma unidade organizacional
+                    com tipo diferente de 'Órgão' ou 'Entidade' essa unidade estará no resultado apenas para manter a
+                    estrutura organizacional correta do órgão."
+      operationId: "OrgaosEntidadesCompleta"
+      produces:
+        - "application/json"
+        - "application/xml"
+        - "text/csv"
+      parameters:
+      - in: "query"
+        name: "CodigoPoder"
+        description: "Código do Poder"
+        type: "integer"
+      - in: "query"
+        name: "CodigoEsfera"
+        description: "Código da Esfera"
+        type: "integer"
+      responses:
+        200:
+          description: OK
+
+
   /unidade-organizacional/{codigoUnidade}:
-      get:
-        tags:
-        - "Consultar Unidade Organizacional"
-        summary: "Consultar Unidade Organizacional Resumida"
-        description: "Retorna os dados resumidos da Unidade Organizacional. O serviço retorna somente os dados da
-                      unidade organizacional passada como parâmetro. Essa unidade organizacionais pode ser de qualquer
-                      tipo de unidade."
-        operationId: "UnidadeOrganizacionalResumida"
-        produces:
-          - "application/xml"
-          - "application/json"
-          - "application/wsdl"
-        parameters:
-        - in: "path"
-          name: "codigoUnidade"
-          type: "integer"
-          description: "Código da Unidade Organizacional"
-          required: true
-        - in: "query"
-          name: "versaoConsulta"
-          description: "Versão específica da Unidade
-                        Organizacional, se não informado
-                        retorna versão atual da unidade."
-          type: "string"
-        responses:
-          200:
-            description: OK
-          102:
-            description: Unidade Organizacional não encontrado(a).
+    get:
+      tags:
+      - "Consultar Unidade Organizacional"
+      summary: "Consultar Unidade Organizacional Resumida"
+      description: "Retorna os dados resumidos da Unidade Organizacional. O serviço retorna somente os dados da
+                    unidade organizacional passada como parâmetro. Essa unidade organizacionais pode ser de qualquer
+                    tipo de unidade."
+      operationId: "UnidadeOrganizacionalResumida"
+      produces:
+        - "application/xml"
+        - "application/json"
+        - "application/wsdl"
+      parameters:
+      - in: "path"
+        name: "codigoUnidade"
+        type: "integer"
+        description: "Código da Unidade Organizacional"
+        required: true
+      - in: "query"
+        name: "versaoConsulta"
+        description: "Versão específica da Unidade
+                      Organizacional, se não informado
+                      retorna versão atual da unidade."
+        type: "string"
+      responses:
+        200:
+          description: OK
+        102:
+          description: Unidade Organizacional não encontrado(a).
+
+            
   /unidade-organizacional/endereco-contato/{codigoUnidade}:
-      get:
-        tags:
-        - "Consulta Endereço e Contato"
-        summary: "Consulta Endereço e Contato"
-        operationId: "EnderecoContato"
-        produces:
-          - "application/json"
-          - "application/xml"
-          - "text/csv"
-        parameters:
-        - in: "path"
-          name: "codigoUnidade"
-          type: "integer"
-          description: "Código da Unidade Organizacional"
-          required: true
-        responses:
-          200:
-            description: OK
-          102:
-            description: Unidade Organizacional não encontrado(a).
+    get:
+      tags:
+      - "Consulta Endereço e Contato"
+      summary: "Consulta Endereço e Contato"
+      operationId: "EnderecoContato"
+      produces:
+        - "application/json"
+        - "application/xml"
+        - "text/csv"
+      parameters:
+      - in: "path"
+        name: "codigoUnidade"
+        type: "integer"
+        description: "Código da Unidade Organizacional"
+        required: true
+      responses:
+        200:
+          description: OK
+        102:
+          description: Unidade Organizacional não encontrado(a).
+
+
   /estrutura-organizacional/{codigoUnidade}/filha:
-      get:
-        tags:
-        - "Consulta Estrutura Organizacional Filha"
-        summary: "Consulta Estrutura Organizacional Filha"
-        operationId: "EstruturaOrganizacionalFilha"
-        produces:
-          - "application/json"
-          - "application/xml"
-          - "text/csv"
-        parameters:
-        - in: "path"
-          name: "codigoUnidade"
-          type: "integer"
-          description: "Código da Unidade Organizacional"
-          required: true
-        - in: "query"
-          name: "retornarOrgaoEntidadeVinculados"
-          scheme:
-          type: "string"
-          enum: ["NAO" , "SIM"] 
-        responses:
-          200:
-            description: OK
-          102:
-            description: Unidade Organizacional não encontrado(a).
+    get:
+      tags:
+      - "Consulta Estrutura Organizacional Filha"
+      summary: "Consulta Estrutura Organizacional Filha"
+      operationId: "EstruturaOrganizacionalFilha"
+      produces:
+        - "application/json"
+        - "application/xml"
+        - "text/csv"
+      parameters:
+      - in: "path"
+        name: "codigoUnidade"
+        type: "integer"
+        description: "Código da Unidade Organizacional"
+        required: true
+      - in: "query"
+        name: "retornarOrgaoEntidadeVinculados"
+        type: "string"
+        enum: ["NAO" , "SIM"] 
+      responses:
+        200:
+          description: OK
+        102:
+          description: Unidade Organizacional não encontrado(a).
+
+
   /unidade-organizacional/{codigoUnidade}/estrutura:
-      get:
-        tags:
-        - "Consulta Estrutura Unidade Organizacional"
-        summary: "Consulta Estrutura Unidade Organizacional"
-        operationId: "EstruturaUnidadeOrganizacional"
-        produces:
-          - "application/json"
-          - "application/xml"
-          - "text/csv"
-        parameters:
-        - in: "path"
-          name: "codigoUnidade"
-          type: "integer"
-          description: "Código da Unidade Organizacional"
-          required: true
-        - in: "query"
-          name: "versaoConsulta"
-          description: "Versão específica da Unidade
-                        Organizacional, se não informado
-                        retorna versão atual da unidade."
-          type: "string"
-        responses:
-          200:
-            description: OK
-          102:
-            description: Unidade Organizacional não encontrado(a).
+    get:
+      tags:
+      - "Consulta Estrutura Unidade Organizacional"
+      summary: "Consulta Estrutura Unidade Organizacional"
+      operationId: "EstruturaUnidadeOrganizacional"
+      produces:
+        - "application/json"
+        - "application/xml"
+        - "text/csv"
+      parameters:
+      - in: "path"
+        name: "codigoUnidade"
+        type: "integer"
+        description: "Código da Unidade Organizacional"
+        required: true
+      - in: "query"
+        name: "versaoConsulta"
+        description: "Versão específica da Unidade
+                      Organizacional, se não informado
+                      retorna versão atual da unidade."
+        type: "string"
+      responses:
+        200:
+          description: OK
+        102:
+          description: Unidade Organizacional não encontrado(a).
+
+  /composicao-colegiado/{codigoUnidade}:
+    get:
+      tags:
+      - "Consulta Integrantes Colegiado"
+      summary: "Consulta Integrantes Colegiado Resumido"
+      operationId: "IntegranteColegiadoResumido"
+      produces:
+        - "application/json"
+        - "application/xml"
+        - "text/csv"
+      parameters:
+      - in: "path"
+        name: "codigoUnidade"
+        type: "integer"
+        description: "Código da Unidade Organizacional"
+        required: true
+      responses:
+        200:
+          description: OK
+        102:
+          description: Unidade Organizacional não encontrado(a).
+
+  /composicao-colegiado/{codigoUnidade}/completa:
+    get:
+      tags:
+      - "Consulta Integrantes Colegiado"
+      summary: "Consulta Integrantes Colegiado Completo"
+      operationId: "IntegranteColegiadoCompleto"
+      produces:
+        - "application/json"
+        - "application/xml"
+        - "text/csv"
+      parameters:
+      - in: "path"
+        name: "codigoUnidade"
+        type: "integer"
+        description: "Código da Unidade Organizacional"
+        required: true
+      responses:
+        200:
+          description: OK
+        102:
+          description: Unidade Organizacional não encontrado(a).
