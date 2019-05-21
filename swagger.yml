@@ -24,6 +24,8 @@ tags:
 de acordo com os parâmetros."
 - name: "Consultar Unidade Organizacional"
   description: "Retorna os dados da Unidade Organizacional"
+- name: "Consulta Endereço e Contato"
+  description: "Retorna os dados de endereço e contato institucionais para uma determinada unidade organizacional."
 schemes:
 - "http"
 paths:
@@ -187,6 +189,36 @@ paths:
                       unidade organizacional passada como parâmetro. Essa unidade organizacionais pode ser de qualquer
                       tipo de unidade."
         operationId: "UnidadeOrganizacionalResumida"
+        produces:
+          - "application/xml"
+          - "application/json"
+          - "application/wsdl"
+        parameters:
+        - in: "path"
+          name: "codigoUnidade"
+          type: "integer"
+          description: "Código da Unidade Organizacional"
+          required: true
+        - in: "query"
+          name: "versaoConsulta"
+          description: "Versão específica da Unidade
+                        Organizacional, se não informado
+                        retorna versão atual da unidade."
+          type: "string"
+        responses:
+          200:
+            description: OK
+  /unidade-organizacional/{codigoUnidade}/completa:
+      get:
+        tags:
+        - "Consultar Unidade Organizacional"
+        summary: "Consultar Unidade Organizacional Completa"
+        description: "Retorna os dados completos da Unidade Organizacional incluindo uma listagem com a estrutura do
+                      mesmo. O serviço retorna somente os dados da unidade organizacional passada como parâmetro. Essa
+                      unidade organizacionais pode ser de qualquer tipo de unidade.
+                      Obs.: Os dados de **endereço** e **contato** são referentes a última atualização pois **não** são armazenados
+                      dados históricos dos mesmos."
+        operationId: "UnidadeOrganizacionalCompleta"
         produces:
           - "application/xml"
           - "application/json"
