@@ -26,6 +26,10 @@ de acordo com os parâmetros."
   description: "Retorna os dados da Unidade Organizacional"
 - name: "Consulta Endereço e Contato"
   description: "Retorna os dados de endereço e contato institucionais para uma determinada unidade organizacional."
+- name: "Consulta Estrutura Organizacional Filha"
+  description: "Retorna o primeiro nível abaixo da estrutura organizacional de uma unidade organizacional. Se
+                escolher retornar órgão e entidades vinculadas retorna as unidades organizacionais filhas e o topo do
+                órgão e entidade vinculados."
 schemes:
 - "http"
 paths:
@@ -93,9 +97,9 @@ paths:
                       “RetornarOrgaoEntidadeVinculados” deve-se passar o parâmetro de “CodigoUnidade” também."
         operationId: "EstruturaOrganizacionalCompleta"
         produces:
-          - "application/xml"
           - "application/json"
-          - "application/wsdl"
+          - "application/xml"
+          - "text/csv"
         parameters:
         - in: "query"
           name: "CodigoPoder"
@@ -138,9 +142,9 @@ paths:
                       estrutura organizacional correta do órgão."
         operationId: "OrgaosEntidadesResumida"
         produces:
-          - "application/xml"
           - "application/json"
-          - "application/wsdl"
+          - "application/xml"
+          - "text/csv"
         parameters:
         - in: "query"
           name: "CodigoPoder"
@@ -165,9 +169,9 @@ paths:
                       estrutura organizacional correta do órgão."
         operationId: "OrgaosEntidadesCompleta"
         produces:
-          - "application/xml"
           - "application/json"
-          - "application/wsdl"
+          - "application/xml"
+          - "text/csv"
         parameters:
         - in: "query"
           name: "CodigoPoder"
@@ -208,33 +212,45 @@ paths:
         responses:
           200:
             description: OK
-  /unidade-organizacional/{codigoUnidade}/completa:
+  /unidade-organizacional/endereco-contato/{codigoUnidade}:
       get:
         tags:
-        - "Consultar Unidade Organizacional"
-        summary: "Consultar Unidade Organizacional Completa"
-        description: "Retorna os dados completos da Unidade Organizacional incluindo uma listagem com a estrutura do
-                      mesmo. O serviço retorna somente os dados da unidade organizacional passada como parâmetro. Essa
-                      unidade organizacionais pode ser de qualquer tipo de unidade.
-                      Obs.: Os dados de **endereço** e **contato** são referentes a última atualização pois **não** são armazenados
-                      dados históricos dos mesmos."
-        operationId: "UnidadeOrganizacionalCompleta"
+        - "Consulta Endereço e Contato"
+        summary: "Consulta Endereço e Contato"
+        operationId: "EnderecoContato"
         produces:
-          - "application/xml"
           - "application/json"
-          - "application/wsdl"
+          - "application/xml"
+          - "text/csv"
         parameters:
         - in: "path"
           name: "codigoUnidade"
           type: "integer"
           description: "Código da Unidade Organizacional"
           required: true
-        - in: "query"
-          name: "versaoConsulta"
-          description: "Versão específica da Unidade
-                        Organizacional, se não informado
-                        retorna versão atual da unidade."
-          type: "string"
         responses:
           200:
             description: OK
+          102:
+            description: Unidade Organizacional não encontrado(a).
+  /estrutura-organizacional/{codigoUnidade}/filha:
+      get:
+        tags:
+        - "Consulta Estrutura Organizacional Filha"
+        summary: "Consulta Estrutura Organizacional Filha"
+        operationId: "EstruturaOrganizacionalFilha"
+        produces:
+          - "application/json"
+          - "application/xml"
+          - "text/csv"
+        parameters:
+        - in: "path"
+          name: "codigoUnidade"
+          type: "integer"
+          description: "Código da Unidade Organizacional"
+          required: true
+        responses:
+          200:
+            description: OK
+          102:
+            description: Unidade Organizacional não encontrado(a).
