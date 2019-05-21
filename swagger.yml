@@ -134,7 +134,7 @@ paths:
                       do tipo órgão ou entidade. Caso um órgão ou entidade esteja vinculada a uma unidade organizacional
                       com tipo diferente de 'Órgão' ou 'Entidade' essa unidade estará no resultado apenas para manter a
                       estrutura organizacional correta do órgão."
-        operationId: "EstruturaOrganizacionalCompleta"
+        operationId: "OrgaosEntidadesResumida"
         produces:
           - "application/xml"
           - "application/json"
@@ -148,6 +148,61 @@ paths:
           name: "CodigoEsfera"
           description: "Código da Esfera"
           type: "integer"
+        responses:
+          200:
+            description: OK
+  /orgao-entidade/completa:
+      get:
+        tags:
+        - "Consulta Orgãos e Entidades"
+        summary: "Consulta Órgãos e Entidades Completo"
+        description: "Retorna os dados completos de todos as unidades organizacionais que tem o tipo órgão ou entidade
+                      de acordo com os parâmetros. Esse serviço não retorna outras unidades organizacionais que não sejam
+                      do tipo órgão ou entidade. Caso um órgão ou entidade esteja vinculada a uma unidade organizacional
+                      com tipo diferente de 'Órgão' ou 'Entidade' essa unidade estará no resultado apenas para manter a
+                      estrutura organizacional correta do órgão."
+        operationId: "OrgaosEntidadesCompleta"
+        produces:
+          - "application/xml"
+          - "application/json"
+          - "application/wsdl"
+        parameters:
+        - in: "query"
+          name: "CodigoPoder"
+          description: "Código do Poder"
+          type: "integer"
+        - in: "query"
+          name: "CodigoEsfera"
+          description: "Código da Esfera"
+          type: "integer"
+        responses:
+          200:
+            description: OK
+  /unidade-organizacional/{codigoUnidade}:
+      get:
+        tags:
+        - "Consultar Unidade Organizacional"
+        summary: "Consultar Unidade Organizacional Resumida"
+        description: "Retorna os dados resumidos da Unidade Organizacional. O serviço retorna somente os dados da
+                      unidade organizacional passada como parâmetro. Essa unidade organizacionais pode ser de qualquer
+                      tipo de unidade."
+        operationId: "UnidadeOrganizacionalResumida"
+        produces:
+          - "application/xml"
+          - "application/json"
+          - "application/wsdl"
+        parameters:
+        - in: "path"
+          name: "codigoUnidade"
+          type: "integer"
+          description: "Código da Unidade Organizacional"
+          required: true
+        - in: "query"
+          name: "versaoConsulta"
+          description: "Versão específica da Unidade
+                        Organizacional, se não informado
+                        retorna versão atual da unidade."
+          type: "string"
         responses:
           200:
             description: OK
