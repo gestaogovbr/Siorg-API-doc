@@ -1,7 +1,7 @@
 swagger: "2.0"
 info:
   version: "1.2"
-  title: "Documentação do Novo Web Service SIORG"
+  title: "Documentação da API do SIORG"
   description: "# 1. Informações gerais sobre o serviço\n## 1.1 Objetivo\n Descrever novos serviços para o SIORG\n 
                 ## 1.5 Gestor do serviço\n
                 Coordenação – Geral de Gestão do Desenvolvimento e Manutenção de Sistemas –
@@ -18,6 +18,8 @@ host: "estruturaorganizacional.dados.gov.br"
 basePath: "/doc"
 tags:
 - name: "Operações"
+  description: > 
+              [Incluir descrição melhor]
 - name: "Consultas de Domínio" 
 - name: "Consultas de Histórico" 
 schemes:
