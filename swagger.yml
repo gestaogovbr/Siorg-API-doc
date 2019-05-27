@@ -17,7 +17,8 @@ info:
 host: "estruturaorganizacional.dados.gov.br"
 basePath: "/doc"
 tags:
-- name: "Operações"  
+- name: "Operações"
+- name: "Consultas de Domínio"  
 schemes:
 - "http"
 paths:
@@ -344,3 +345,214 @@ paths:
           description: OK
         102:
           description: Unidade Organizacional não encontrado(a).
+
+  /natureza-juridica/{codigoNaturezaJuridica}:
+    get:
+      tags:
+      - "Consultas de Domínio"
+      summary: "Consulta Natureza Jurídica"
+      operationId: "NaturezaJuridica"
+      description: "Retorna os tipos de Natureza Jurídica cadastradas no sistema. As naturezas são aquelas definidas no
+                    Decreto-lei 200: administração direta, autarquia, fundação, empresa pública e sociedade de economia
+                    mista."
+      produces:
+        - "application/json"
+        - "application/xml"
+        - "text/csv"
+      parameters:
+      - in: "path"
+        name: "codigoNaturezaJuridica"
+        type: "integer"
+        description: "Código da Natureza Jurídica. Se não
+                      informado retorna uma lista com
+                      todas as naturezas jurídicas
+                      cadastrados"
+        required: false
+        default: ''
+      - in: "query"
+        name: "ativo"
+        description: "Texto “SIM” para informar que
+                      retorne somente as naturezas
+                      jurídicas ativas ou “NAO” para trazer todas as naturezas jurídicas. Se
+                      não informado traz lista com todas."
+        type: "string"
+        enum: ["NAO" , "SIM"] 
+      responses:
+        200:
+          description: OK
+        102:
+          description: NaturezaJuridica não encontrado(a).
+
+  /poder/{codigoPoder}:
+    get:
+      tags:
+      - "Consultas de Domínio"
+      summary: "Consulta Poder"
+      operationId: "Poder"
+      description: "Retorna os tipos de Poder cadastradas no sistema"
+      produces:
+        - "application/json"
+        - "application/xml"
+        - "text/csv"
+      parameters:
+      - in: "path"
+        name: "codigoPoder"
+        type: "integer"
+        description: "Código do Poder. Se não informado
+                      retorna uma lista com todas os
+                      poderes cadastrados"
+        required: false
+        default: ''
+      - in: "query"
+        name: "ativo"
+        description: "Texto “SIM” para informar que
+                      retorne somente os poderes ativos ou
+                      “NAO” para trazer todas os poderes.
+                      Se não informado traz lista com todos."
+        type: "string"
+        enum: ["NAO" , "SIM"] 
+      responses:
+        200:
+          description: OK
+        102:
+          description: Poder não encontrado(a).
+
+  /esfera/{codigoEsfera}:
+    get:
+      tags:
+      - "Consultas de Domínio"
+      summary: "Consulta Esfera"
+      operationId: "Esfera"
+      description: "Retorna os tipos de Esfera cadastradas no sistema"
+      produces:
+        - "application/json"
+        - "application/xml"
+        - "text/csv"
+      parameters:
+      - in: "path"
+        name: "codigoEsfera"
+        type: "integer"
+        description: "Código da Esfera. Se não informado
+                      retorna uma lista com todas as
+                      naturezas jurídicas cadastrados"
+        required: false
+        default: ''
+      - in: "query"
+        name: "ativo"
+        description: "Texto “SIM” para informar que
+                      retorne somente as esferas ativas ou
+                      “NAO” para trazer todas as
+                      esferas.Se não informado traz lista
+                      com todas."
+        type: "string"
+        enum: ["NAO" , "SIM"] 
+      responses:
+        200:
+          description: OK
+        102:
+          description: Esfera não encontrado(a).
+
+  /tipo-unidade/{codigoTipoUnidade}:
+    get:
+      tags:
+      - "Consultas de Domínio"
+      summary: "Consulta Tipo de Unidade Organizacional"
+      operationId: "TipoUnidade"
+      description: "Retorna os Tipos de Unidade Organizacional cadastradas no sistema"
+      produces:
+        - "application/json"
+        - "application/xml"
+        - "text/csv"
+      parameters:
+      - in: "path"
+        name: "codigoTipoUnidade"
+        type: "integer"
+        description: "CodigoTipoUnidade"
+        required: false
+        default: ''
+      responses:
+        200:
+          description: OK
+        102:
+          description: TipoUnidade não encontrado(a).
+
+  /categoria-unidade/{codigoCategoriaUnidade}:
+    get:
+      tags:
+      - "Consultas de Domínio"
+      summary: "Consulta Categoria de Unidade Organizacional"
+      operationId: "CategoriaUnidade"
+      description: "Retorna as Categoria de Unidade Organizacional cadastradas no sistema"
+      produces:
+        - "application/json"
+        - "application/xml"
+        - "text/csv"
+      parameters:
+      - in: "path"
+        name: "codigoCategoriaUnidade"
+        type: "integer"
+        description: "Código de categoria de unidade
+                      organizacional. Se não informado
+                      retorna uma lista com todos as
+                      categorias de unidade cadastrados"
+        required: false
+        default: ''
+      - in: "query"
+        name: "ativo"
+        description: "Texto “SIM” para informar que
+                      retorne somente as esferas ativas ou
+                      “NAO” para trazer todas as
+                      esferas.Se não informado traz lista
+                      com todas."
+        type: "string"
+        enum: ["NAO" , "SIM"] 
+      responses:
+        200:
+          description: OK
+        102:
+          description: Categoria de Unidade não encontrado(a).
+          
+  /subnatureza-juridica/{codigoSubNaturezaJuridica}:
+    get:
+      tags:
+      - "Consultas de Domínio"
+      summary: "Consulta Subnatureza Jurídica"
+      operationId: "SubnaturezaJuridica"
+      description: "Retorna as Subnaturezas Juridicas cadastradas no sistema. A Subnatureza é um detalhamento
+                    opcional da Natureza."
+      produces:
+        - "application/json"
+        - "application/xml"
+        - "text/csv"
+      parameters:
+      - in: "path"
+        name: "codigoSubNaturezaJuridica"
+        type: "integer"
+        description: "Código de Subnatureza Jurídica. Se
+                      não informado retorna uma lista com
+                      todos as subnaturezas jurídicas
+                      cadastrados"
+        required: false
+        default: ''
+      - in: "query"
+        name: "codigoNaturezaJuridica"
+        description: "Código de Natureza Jurídica. Se
+                      informado retorna uma lista com
+                      todas as subnaturezas cadastrados
+                      relacionadas a uma Natureza
+                      Juridica."
+        type: "integer"
+      - in: "query"
+        name: "ativo"
+        description: "Texto “SIM” para informar que
+                      retorne somente os tipos ativas ou
+                      “NAO” para trazer todas as
+                      subnaturezas jurídicas. Se não
+                      informado traz lista com todos."
+        type: "string"
+        enum: ["NAO" , "SIM"] 
+      responses:
+        200:
+          description: OK
+        102:
+          description: Sub Natureza Jurídica não encontrado(a).
