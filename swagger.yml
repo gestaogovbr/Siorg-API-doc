@@ -18,7 +18,8 @@ host: "estruturaorganizacional.dados.gov.br"
 basePath: "/doc"
 tags:
 - name: "Operações"
-- name: "Consultas de Domínio"  
+- name: "Consultas de Domínio" 
+- name: "Consultas de Histórico" 
 schemes:
 - "http"
 paths:
@@ -556,3 +557,76 @@ paths:
           description: OK
         102:
           description: Sub Natureza Jurídica não encontrado(a).
+
+  /unidade-organizacional/{codigoUnidade}/versao:
+    get:
+      tags:
+      - "Consultas de Histórico"
+      summary: "Consulta Versão da Unidade Organizacional"
+      operationId: "VersaoUnidade"
+      description: "Retorna a versão anterior e posterior da versão informada da Unidade Organizacional. Se nenhuma
+                    versão é informada retorna a atual no campo VersaoConsulta e a anterior no campo VersaoAnterior.
+                    Caso seja informado a primeira versão do órgão ou entidade o valor de VersaoAnterior retornará vazio.
+                    Caso seja informado a última versão do órgão ou entidade o valor de VersaoPosterior retornará vazio."
+      produces:
+        - "application/json"
+        - "application/xml"
+        - "text/csv"
+      parameters:
+      - in: "path"
+        name: "codigoUnidade"
+        type: "integer"
+        description: "Código da Unidade Organizacional"
+        required: false
+        default: ''
+      - in: "query"
+        name: "versaoConsulta"
+        description: "Versão da Unidade Organizacional
+                      de acordo com definido em
+                      TipoVersao."
+        type: "string"
+      responses:
+        200:
+          description: OK
+        102:
+          description: Unidade Organizacional não encontrado(a).
+        103:
+          description: Campo(s) Versão inválido(s).
+
+  /unidade-organizacional/{codigoUnidade}/alteradas:
+    get:
+      tags:
+      - "Consultas de Histórico"
+      summary: "Consulta Unidades Alteradas do Órgão"
+      operationId: "UnidadesAlteradasOrgao"
+      description: "Retorna uma lista de unidades organizacionais alteradas desde a versão passada. O CodigoUnidade
+                    deve ser do tipo Órgão ou Entidade. O serviço retorna uma listagem de unidades resumidas da versão de
+                    consulta até a versão atual."
+      produces:
+        - "application/json"
+        - "application/xml"
+        - "text/csv"
+      parameters:
+      - in: "path"
+        name: "codigoUnidade"
+        type: "integer"
+        description: "Código da Unidade Organizacional o
+                      código deve ser do tipo Órgão ou
+                      Entidade"
+        required: false
+        default: ''
+      - in: "query"
+        name: "versaoConsulta"
+        description: "Versão da Unidade Organizacional
+                      de acordo com definido em
+                      TipoVersao."
+        type: "string"
+      responses:
+        200:
+          description: OK
+        102:
+          description: Unidade Organizacional não encontrado(a).
+        103:
+          description: Campo(s) Versão inválido(s).
+        104:
+          description: Unidade organizacional deve ser um órgão ou entidade          
