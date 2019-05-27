@@ -615,8 +615,7 @@ paths:
         description: "Código da Unidade Organizacional o
                       código deve ser do tipo Órgão ou
                       Entidade"
-        required: false
-        default: ''
+        required: true
       - in: "query"
         name: "versaoConsulta"
         description: "Versão da Unidade Organizacional
