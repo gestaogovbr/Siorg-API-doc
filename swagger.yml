@@ -250,6 +250,8 @@ paths:
           description: OK
         102:
           description: Unidade Organizacional não encontrado(a).
+        404:
+          description: URL inválida ou não existente
 
 
 
@@ -316,6 +318,8 @@ paths:
           description: OK
         102:
           description: Unidade Organizacional não encontrado(a).
+        103:
+          description: Campo(s) Versão inválido(s).  
 
 
 

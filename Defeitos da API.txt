@@ -5,3 +5,5 @@
 * [Códigos HTTP errados] A API sempre retorna código HTTP 200 mesmo quando a consulta está errada. Além disso a API retorna um JSON com a mensagem e o código de erro no corpo do conteúdo.
 
 * [Rever Documentação] item "2.3.5 Consulta Categoria de Unidade Organizacional" com documentação errada
+
+* dois primeiros métodos (2.2.1, 2.2.2) demoram tempo demais para carregar portanto não foi possivel encontrar codigos de erro na resposta
