@@ -26,6 +26,8 @@ schemes:
 - "http"
 paths:
 
+
+
   /estrutura-organizacional:
     get:
       tags:
@@ -74,6 +76,8 @@ paths:
           description: CodigoUnidade não encontrado(a).
         104:
           description: Unidade organizacional deve ser um órgão ou entidade
+
+
 
 
   /estrutura-organizacional/completa:
@@ -126,7 +130,9 @@ paths:
         104:
           description: Unidade organizacional deve ser um órgão ou entidade 2.2.3.4 URIs exemplificativas
   
-  
+
+          
+
   /orgao-entidade:
     get:
       tags:
@@ -156,6 +162,8 @@ paths:
           description: OK
 
 
+
+
   /orgao-entidade/completa:
     get:
       tags:
@@ -183,6 +191,8 @@ paths:
       responses:
         200:
           description: OK
+
+
 
 
   /unidade-organizacional/{codigoUnidade}:
@@ -216,7 +226,9 @@ paths:
         102:
           description: Unidade Organizacional não encontrado(a).
 
-            
+
+          
+
   /unidade-organizacional/endereco-contato/{codigoUnidade}:
     get:
       tags:
@@ -238,6 +250,8 @@ paths:
           description: OK
         102:
           description: Unidade Organizacional não encontrado(a).
+
+
 
 
   /estrutura-organizacional/{codigoUnidade}/filha:
@@ -268,6 +282,8 @@ paths:
           description: OK
         102:
           description: Unidade Organizacional não encontrado(a).
+
+
 
 
   /unidade-organizacional/{codigoUnidade}/estrutura:
@@ -301,6 +317,8 @@ paths:
         102:
           description: Unidade Organizacional não encontrado(a).
 
+
+
   /composicao-colegiado/{codigoUnidade}:
     get:
       tags:
@@ -325,6 +343,8 @@ paths:
         102:
           description: Unidade Organizacional não encontrado(a).
 
+
+
   /composicao-colegiado/{codigoUnidade}/completa:
     get:
       tags:
@@ -348,6 +368,8 @@ paths:
           description: OK
         102:
           description: Unidade Organizacional não encontrado(a).
+
+
 
   /natureza-juridica/{codigoNaturezaJuridica}:
     get:
@@ -386,6 +408,8 @@ paths:
         102:
           description: NaturezaJuridica não encontrado(a).
 
+
+
   /poder/{codigoPoder}:
     get:
       tags:
@@ -419,6 +443,8 @@ paths:
           description: OK
         102:
           description: Poder não encontrado(a).
+
+
 
   /esfera/{codigoEsfera}:
     get:
@@ -455,6 +481,8 @@ paths:
         102:
           description: Esfera não encontrado(a).
 
+
+
   /tipo-unidade/{codigoTipoUnidade}:
     get:
       tags:
@@ -478,6 +506,10 @@ paths:
           description: OK
         102:
           description: TipoUnidade não encontrado(a).
+        103:
+          description: Campo(s) Versão inválido(s).          
+
+
 
   /categoria-unidade/{codigoCategoriaUnidade}:
     get:
@@ -514,7 +546,11 @@ paths:
           description: OK
         102:
           description: Categoria de Unidade não encontrado(a).
+        103:
+          description: Campo(s) Versão inválido(s).
+
           
+
   /subnatureza-juridica/{codigoSubNaturezaJuridica}:
     get:
       tags:
@@ -528,15 +564,6 @@ paths:
         - "application/xml"
         - "text/csv"
       parameters:
-      - in: "path"
-        name: "codigoSubNaturezaJuridica"
-        type: "integer"
-        description: "Código de Subnatureza Jurídica. Se
-                      não informado retorna uma lista com
-                      todos as subnaturezas jurídicas
-                      cadastrados"
-        required: false
-        default: ''
       - in: "query"
         name: "codigoNaturezaJuridica"
         description: "Código de Natureza Jurídica. Se
@@ -545,6 +572,7 @@ paths:
                       relacionadas a uma Natureza
                       Juridica."
         type: "integer"
+        default: '' 
       - in: "query"
         name: "ativo"
         description: "Texto “SIM” para informar que
@@ -553,12 +581,25 @@ paths:
                       subnaturezas jurídicas. Se não
                       informado traz lista com todos."
         type: "string"
-        enum: ["NAO" , "SIM"] 
+        enum: ["NAO" , "SIM"]
+      - in: "path"
+        name: "codigoSubNaturezaJuridica"
+        type: "integer"
+        description: "Código de Subnatureza Jurídica. Se
+                      não informado retorna uma lista com
+                      todos as subnaturezas jurídicas
+                      cadastrados"
+        required: false
+        default: '' 
       responses:
         200:
           description: OK
         102:
           description: Sub Natureza Jurídica não encontrado(a).
+        103:
+          description: Campo(s) Código inválido(s).
+
+
 
   /unidade-organizacional/{codigoUnidade}/versao:
     get:
@@ -594,6 +635,8 @@ paths:
           description: Unidade Organizacional não encontrado(a).
         103:
           description: Campo(s) Versão inválido(s).
+
+
 
   /unidade-organizacional/{codigoUnidade}/alteradas:
     get:
