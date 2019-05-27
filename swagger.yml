@@ -17,26 +17,7 @@ info:
 host: "estruturaorganizacional.dados.gov.br"
 basePath: "/doc"
 tags:
-- name: "Consulta Estrutura Organizacional"
-  description: "Retorna os dados de todas as unidades da estrutura organizacional do governo."
-- name: "Consulta Orgãos e Entidades"
-  description: "Retorna os dados de todos as unidades organizacionais que tem o tipo órgão ou entidade
-de acordo com os parâmetros."
-- name: "Consultar Unidade Organizacional"
-  description: "Retorna os dados da Unidade Organizacional"
-- name: "Consulta Endereço e Contato"
-  description: "Retorna os dados de endereço e contato institucionais para uma determinada unidade organizacional."
-- name: "Consulta Estrutura Organizacional Filha"
-  description: "Retorna o primeiro nível abaixo da estrutura organizacional de uma unidade organizacional. Se
-                escolher retornar órgão e entidades vinculadas retorna as unidades organizacionais filhas e o topo do
-                órgão e entidade vinculados."
-- name: "Consulta Estrutura Unidade Organizacional"
-  description: "Retorna apenas a informação da hierarquia da estrutura abaixo da unidade organizacional
-                pesquisada. Para descobrir o órgão topo de um “Poder” e “esfera” pode-se utilizar a consulta Consulta
-                Estrutura Organizacional Resumida"
-- name: "Consulta Integrantes Colegiado"
-  description: "Retorna os dados das unidades organizacionais ou não governamentais que compõem a
-                unidade colegiada."
+- name: "Operações"  
 schemes:
 - "http"
 paths:
@@ -44,7 +25,7 @@ paths:
   /estrutura-organizacional:
     get:
       tags:
-      - "Consulta Estrutura Organizacional"
+      - "Operações"
       summary: "Consulta Estrutura Organizacional Resumida"
       description: "Retorna os dados resumidos de todas as unidades da estrutura organizacional do governo. Esse
                     serviço retorna toda a estrutura do governo de forma resumida.
@@ -94,7 +75,7 @@ paths:
   /estrutura-organizacional/completa:
     get:
       tags:
-      - "Consulta Estrutura Organizacional"
+      - "Operações"
       summary: "Consulta Estrutura Organizacional Completa"
       description: "Retorna os dados completos de todas as unidades da estrutura organizacional do governo. Esse
                     serviço retorna toda a estrutura do governo de forma completa.
@@ -145,7 +126,7 @@ paths:
   /orgao-entidade:
     get:
       tags:
-      - "Consulta Orgãos e Entidades"
+      - "Operações"
       summary: "Consulta Orgãos e Entidades Resumida"
       description: "Retorna os dados resumidos de todos as unidades organizacionais que tem o tipo órgão ou entidade
                     de acordo com os parâmetros. Esse serviço não retorna outras unidades organizacionais que não sejam
@@ -174,7 +155,7 @@ paths:
   /orgao-entidade/completa:
     get:
       tags:
-      - "Consulta Orgãos e Entidades"
+      - "Operações"
       summary: "Consulta Órgãos e Entidades Completo"
       description: "Retorna os dados completos de todos as unidades organizacionais que tem o tipo órgão ou entidade
                     de acordo com os parâmetros. Esse serviço não retorna outras unidades organizacionais que não sejam
@@ -203,7 +184,7 @@ paths:
   /unidade-organizacional/{codigoUnidade}:
     get:
       tags:
-      - "Consultar Unidade Organizacional"
+      - "Operações"
       summary: "Consultar Unidade Organizacional Resumida"
       description: "Retorna os dados resumidos da Unidade Organizacional. O serviço retorna somente os dados da
                     unidade organizacional passada como parâmetro. Essa unidade organizacionais pode ser de qualquer
@@ -235,7 +216,7 @@ paths:
   /unidade-organizacional/endereco-contato/{codigoUnidade}:
     get:
       tags:
-      - "Consulta Endereço e Contato"
+      - "Operações"
       summary: "Consulta Endereço e Contato"
       operationId: "EnderecoContato"
       produces:
@@ -258,9 +239,12 @@ paths:
   /estrutura-organizacional/{codigoUnidade}/filha:
     get:
       tags:
-      - "Consulta Estrutura Organizacional Filha"
+      - "Operações"
       summary: "Consulta Estrutura Organizacional Filha"
       operationId: "EstruturaOrganizacionalFilha"
+      description: "Retorna o primeiro nível abaixo da estrutura organizacional de uma unidade organizacional. Se
+                escolher retornar órgão e entidades vinculadas retorna as unidades organizacionais filhas e o topo do
+                órgão e entidade vinculados."
       produces:
         - "application/json"
         - "application/xml"
@@ -285,9 +269,12 @@ paths:
   /unidade-organizacional/{codigoUnidade}/estrutura:
     get:
       tags:
-      - "Consulta Estrutura Unidade Organizacional"
+      - "Operações"
       summary: "Consulta Estrutura Unidade Organizacional"
       operationId: "EstruturaUnidadeOrganizacional"
+      description: "Retorna apenas a informação da hierarquia da estrutura abaixo da unidade organizacional
+                pesquisada. Para descobrir o órgão topo de um “Poder” e “esfera” pode-se utilizar a consulta Consulta
+                Estrutura Organizacional Resumida"
       produces:
         - "application/json"
         - "application/xml"
@@ -313,9 +300,11 @@ paths:
   /composicao-colegiado/{codigoUnidade}:
     get:
       tags:
-      - "Consulta Integrantes Colegiado"
+      - "Operações"
       summary: "Consulta Integrantes Colegiado Resumido"
       operationId: "IntegranteColegiadoResumido"
+      description: "Retorna os dados resumidos das unidades organizacionais ou não governamentais que compõem a
+                    unidade colegiada. O código informado como parâmetro de entrada deve ser de uma unidade colegiada."
       produces:
         - "application/json"
         - "application/xml"
@@ -335,9 +324,11 @@ paths:
   /composicao-colegiado/{codigoUnidade}/completa:
     get:
       tags:
-      - "Consulta Integrantes Colegiado"
+      - "Operações"
       summary: "Consulta Integrantes Colegiado Completo"
       operationId: "IntegranteColegiadoCompleto"
+      description: "Retorna os dados completos das unidades organizacionais ou não governamentais que compõem a
+                    unidade colegiada. O código informado como parâmetro de entrada deve ser de uma unidade colegiada."
       produces:
         - "application/json"
         - "application/xml"

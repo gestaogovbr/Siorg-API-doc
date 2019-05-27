@@ -1,5 +1,5 @@
 # Erros diversos encontrados na API
 
-* Os métodos "2.2.1 Consulta Estrutura Organizacional Resumida" resumido e completo não retornam nada, pois permanecem em execução indefinidamente.
+* [Erro de desempenho. A consulta trava] Os métodos "2.2.1 Consulta Estrutura Organizacional Resumida" resumido e completo não retornam nada, pois permanecem em execução indefinidamente.
 
-* O método "Consulta Orgãos e Entidades - Resumida" (http://estruturaorganizacional.dados.gov.br/doc/orgao-entidade) está com erro de CORS. Erro: TypeError: Origin http://localhost:9000 is not allowed by Access-Control-Allow-Origin.
+* [Códigos HTTP errados] A API sempre retorna código HTTP 200 mesmo quando a consulta está errada. Além disso a API retorna um JSON com a mensagem e o código de erro no corpo do conteúdo.
