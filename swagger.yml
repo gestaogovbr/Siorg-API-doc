@@ -2,15 +2,26 @@ swagger: "2.0"
 info:
   version: "1.2"
   title: "Documentação da API do SIORG"
-  description: "# 1. Informações gerais sobre o serviço\n## 1.1 Objetivo\n Descrever novos serviços para o SIORG\n 
-                ## 1.5 Gestor do serviço\n
-                Coordenação – Geral de Gestão do Desenvolvimento e Manutenção de Sistemas –
-                CGDMS/DESIN/SEGEP/MP\n
-                Contato: cgdms.segep@planejamento.gov.br\n
-                ## 1.6 Responsável técnico\n
-                Coordenação – Geral de Gestão do Desenvolvimento e Manutenção de Sistemas –
-                CGDMS/DESIN/SEGEP/MP\n
-                Contato: cgdms.segep@planejamento.gov.br\n"
+  description: >
+                # 1. Informações gerais sobre o serviço
+                
+                ## 1.1 Objetivo
+                
+                Descrever novos serviços para o SIORG 
+                
+                ![Diagrama Entidade-Relacional dos dados da API](https://raw.githubusercontent.com/economiagovbr/Siorg-API-doc/80b2c208b9ed429695a6e3d6fef890b66bf267b6/assets/Modelagem.jpg)
+                
+                ## 1.5 Gestor do serviço
+
+                Coordenação – Geral de Gestão do Desenvolvimento e Manutenção de Sistemas – CGDMS/DESIN/SEGEP/MP
+                
+                Contato: cgdms.segep@planejamento.gov.br
+                
+                ## 1.6 Responsável técnico
+
+                Coordenação – Geral de Gestão do Desenvolvimento e Manutenção de Sistemas – CGDMS/DESIN/SEGEP/MP
+                
+                Contato: cgdms.segep@planejamento.gov.br
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
@@ -33,14 +44,15 @@ paths:
       tags:
       - "Operações"
       summary: "Consulta Estrutura Organizacional Resumida"
-      description: "Retorna os dados resumidos de todas as unidades da estrutura organizacional do governo. Esse
+      description: >- 
+                    Retorna os *dados resumidos* de todas as **unidades organizacionais** do governo. Esse
                     serviço retorna toda a estrutura do governo de forma resumida.
                     Caso seja utilizado o “CodigoUnidade” retorna os dados resumidos de um órgão ou entidade do
                     governo. Todas as unidades organizacionais do órgão ou entidade são retornados. Se desejar que os
                     órgãos e entidades vinculadas sejam retornadas deve-se informar no parâmetro de
                     “RetornarOrgaoEntidadeVinculados” em conjunto com o “CodigoUnidade” e todas as unidades
                     organizacionais dos órgãos e entidades vinculadas são retornados também. Se for passado
-                    “RetornarOrgaoEntidadeVinculados” deve-se passar o parâmetro de “CodigoUnidade” também."
+                    “RetornarOrgaoEntidadeVinculados” deve-se passar o parâmetro de “CodigoUnidade” também.
       operationId: "EstruturaOrganizacionalResumida"
       produces:
       - "application/xml"
