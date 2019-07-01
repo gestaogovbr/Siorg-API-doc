@@ -28,10 +28,10 @@ info:
 host: "estruturaorganizacional.dados.gov.br"
 basePath: "/doc"
 tags:
-- name: "Operações"
+- name: "Consulta dados dos Órgãos"
   description: > 
               [Incluir descrição melhor]
-- name: "Consultas de Domínio" 
+- name: "Dimensões das Unidades Organizacionais" 
 - name: "Consultas de Histórico" 
 schemes:
 - "http"
@@ -42,7 +42,7 @@ paths:
   /estrutura-organizacional:
     get:
       tags:
-      - "Operações"
+      - "Consulta dados dos Órgãos"
       summary: "Consulta Estrutura Organizacional Resumida"
       description: >- 
                     Retorna os *dados resumidos* de todas as **unidades organizacionais** do governo. Esse
@@ -95,7 +95,7 @@ paths:
   /estrutura-organizacional/completa:
     get:
       tags:
-      - "Operações"
+      - "Consulta dados dos Órgãos"
       summary: "Consulta Estrutura Organizacional Completa"
       description: "Retorna os dados completos de todas as unidades da estrutura organizacional do governo. Esse
                     serviço retorna toda a estrutura do governo de forma completa.
@@ -143,12 +143,40 @@ paths:
           description: Unidade organizacional deve ser um órgão ou entidade 2.2.3.4 URIs exemplificativas
   
 
+  /estrutura-organizacional/{codigoUnidade}/filha:
+    get:
+      tags:
+      - "Consulta dados dos Órgãos"
+      summary: "Consulta Estrutura Organizacional Filha"
+      operationId: "EstruturaOrganizacionalFilha"
+      description: "Retorna o primeiro nível abaixo da estrutura organizacional de uma unidade organizacional. Se
+                escolher retornar órgão e entidades vinculadas retorna as unidades organizacionais filhas e o topo do
+                órgão e entidade vinculados."
+      produces:
+        - "application/json"
+        - "application/xml"
+        - "text/csv"
+      parameters:
+      - in: "path"
+        name: "codigoUnidade"
+        type: "integer"
+        description: "Código da Unidade Organizacional"
+        required: true
+      - in: "query"
+        name: "retornarOrgaoEntidadeVinculados"
+        type: "string"
+        enum: ["NAO" , "SIM"] 
+      responses:
+        200:
+          description: OK
+        102:
+          description: Unidade Organizacional não encontrado(a).
           
 
   /orgao-entidade:
     get:
       tags:
-      - "Operações"
+      - "Consulta dados dos Órgãos"
       summary: "Consulta Orgãos e Entidades Resumida"
       description: "Retorna os dados resumidos de todos as unidades organizacionais que tem o tipo órgão ou entidade
                     de acordo com os parâmetros. Esse serviço não retorna outras unidades organizacionais que não sejam
@@ -179,7 +207,7 @@ paths:
   /orgao-entidade/completa:
     get:
       tags:
-      - "Operações"
+      - "Consulta dados dos Órgãos"
       summary: "Consulta Órgãos e Entidades Completo"
       description: "Retorna os dados completos de todos as unidades organizacionais que tem o tipo órgão ou entidade
                     de acordo com os parâmetros. Esse serviço não retorna outras unidades organizacionais que não sejam
@@ -210,7 +238,7 @@ paths:
   /unidade-organizacional/{codigoUnidade}:
     get:
       tags:
-      - "Operações"
+      - "Consulta dados dos Órgãos"
       summary: "Consultar Unidade Organizacional Resumida"
       description: "Retorna os dados resumidos da Unidade Organizacional. O serviço retorna somente os dados da
                     unidade organizacional passada como parâmetro. Essa unidade organizacionais pode ser de qualquer
@@ -244,7 +272,7 @@ paths:
   /unidade-organizacional/endereco-contato/{codigoUnidade}:
     get:
       tags:
-      - "Operações"
+      - "Consulta dados dos Órgãos"
       summary: "Consulta Endereço e Contato"
       operationId: "EnderecoContato"
       produces:
@@ -265,45 +293,10 @@ paths:
         404:
           description: URL inválida ou não existente
 
-
-
-
-  /estrutura-organizacional/{codigoUnidade}/filha:
-    get:
-      tags:
-      - "Operações"
-      summary: "Consulta Estrutura Organizacional Filha"
-      operationId: "EstruturaOrganizacionalFilha"
-      description: "Retorna o primeiro nível abaixo da estrutura organizacional de uma unidade organizacional. Se
-                escolher retornar órgão e entidades vinculadas retorna as unidades organizacionais filhas e o topo do
-                órgão e entidade vinculados."
-      produces:
-        - "application/json"
-        - "application/xml"
-        - "text/csv"
-      parameters:
-      - in: "path"
-        name: "codigoUnidade"
-        type: "integer"
-        description: "Código da Unidade Organizacional"
-        required: true
-      - in: "query"
-        name: "retornarOrgaoEntidadeVinculados"
-        type: "string"
-        enum: ["NAO" , "SIM"] 
-      responses:
-        200:
-          description: OK
-        102:
-          description: Unidade Organizacional não encontrado(a).
-
-
-
-
   /unidade-organizacional/{codigoUnidade}/estrutura:
     get:
       tags:
-      - "Operações"
+      - "Consulta dados dos Órgãos"
       summary: "Consulta Estrutura Unidade Organizacional"
       operationId: "EstruturaUnidadeOrganizacional"
       description: "Retorna apenas a informação da hierarquia da estrutura abaixo da unidade organizacional
@@ -338,7 +331,7 @@ paths:
   /composicao-colegiado/{codigoUnidade}:
     get:
       tags:
-      - "Operações"
+      - "Consulta dados dos Órgãos"
       summary: "Consulta Integrantes Colegiado Resumido"
       operationId: "IntegranteColegiadoResumido"
       description: "Retorna os dados resumidos das unidades organizacionais ou não governamentais que compõem a
@@ -364,7 +357,7 @@ paths:
   /composicao-colegiado/{codigoUnidade}/completa:
     get:
       tags:
-      - "Operações"
+      - "Consulta dados dos Órgãos"
       summary: "Consulta Integrantes Colegiado Completo"
       operationId: "IntegranteColegiadoCompleto"
       description: "Retorna os dados completos das unidades organizacionais ou não governamentais que compõem a
@@ -390,7 +383,7 @@ paths:
   /natureza-juridica/{codigoNaturezaJuridica}:
     get:
       tags:
-      - "Consultas de Domínio"
+      - "Dimensões das Unidades Organizacionais"
       summary: "Consulta Natureza Jurídica"
       operationId: "NaturezaJuridica"
       description: "Retorna os tipos de Natureza Jurídica cadastradas no sistema. As naturezas são aquelas definidas no
@@ -429,7 +422,7 @@ paths:
   /poder/{codigoPoder}:
     get:
       tags:
-      - "Consultas de Domínio"
+      - "Dimensões das Unidades Organizacionais"
       summary: "Consulta Poder"
       operationId: "Poder"
       description: "Retorna os tipos de Poder cadastradas no sistema"
@@ -465,7 +458,7 @@ paths:
   /esfera/{codigoEsfera}:
     get:
       tags:
-      - "Consultas de Domínio"
+      - "Dimensões das Unidades Organizacionais"
       summary: "Consulta Esfera"
       operationId: "Esfera"
       description: "Retorna os tipos de Esfera cadastradas no sistema"
@@ -502,7 +495,7 @@ paths:
   /tipo-unidade/{codigoTipoUnidade}:
     get:
       tags:
-      - "Consultas de Domínio"
+      - "Dimensões das Unidades Organizacionais"
       summary: "Consulta Tipo de Unidade Organizacional"
       operationId: "TipoUnidade"
       description: "Retorna os Tipos de Unidade Organizacional cadastradas no sistema"
@@ -530,7 +523,7 @@ paths:
   /categoria-unidade/{codigoCategoriaUnidade}:
     get:
       tags:
-      - "Consultas de Domínio"
+      - "Dimensões das Unidades Organizacionais"
       summary: "Consulta Categoria de Unidade Organizacional"
       operationId: "CategoriaUnidade"
       description: "Retorna as Categoria de Unidade Organizacional cadastradas no sistema"
@@ -570,7 +563,7 @@ paths:
   /subnatureza-juridica/{codigoSubNaturezaJuridica}:
     get:
       tags:
-      - "Consultas de Domínio"
+      - "Dimensões das Unidades Organizacionais"
       summary: "Consulta Subnatureza Jurídica"
       operationId: "SubnaturezaJuridica"
       description: "Retorna as Subnaturezas Juridicas cadastradas no sistema. A Subnatureza é um detalhamento
