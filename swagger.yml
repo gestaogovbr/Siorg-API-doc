@@ -417,7 +417,53 @@ paths:
         102:
           description: NaturezaJuridica não encontrado(a).
 
-
+  /subnatureza-juridica/{codigoSubNaturezaJuridica}:
+    get:
+      tags:
+      - "Dimensões das Unidades Organizacionais"
+      summary: "Consulta Subnatureza Jurídica"
+      operationId: "SubnaturezaJuridica"
+      description: "Retorna as Subnaturezas Juridicas cadastradas no sistema. A Subnatureza é um detalhamento
+                    opcional da Natureza."
+      produces:
+        - "application/json"
+        - "application/xml"
+        - "text/csv"
+      parameters:
+      - in: "query"
+        name: "codigoNaturezaJuridica"
+        description: "Código de Natureza Jurídica. Se
+                      informado retorna uma lista com
+                      todas as subnaturezas cadastrados
+                      relacionadas a uma Natureza
+                      Juridica."
+        type: "integer"
+        default: '' 
+      - in: "query"
+        name: "ativo"
+        description: "Texto “SIM” para informar que
+                      retorne somente os tipos ativas ou
+                      “NAO” para trazer todas as
+                      subnaturezas jurídicas. Se não
+                      informado traz lista com todos."
+        type: "string"
+        enum: ["NAO" , "SIM"]
+      - in: "path"
+        name: "codigoSubNaturezaJuridica"
+        type: "integer"
+        description: "Código de Subnatureza Jurídica. Se
+                      não informado retorna uma lista com
+                      todos as subnaturezas jurídicas
+                      cadastrados"
+        required: false
+        default: '' 
+      responses:
+        200:
+          description: OK
+        102:
+          description: Sub Natureza Jurídica não encontrado(a).
+        103:
+          description: Campo(s) Código inválido(s).
 
   /poder/{codigoPoder}:
     get:
@@ -558,58 +604,7 @@ paths:
         103:
           description: Campo(s) Versão inválido(s).
 
-          
-
-  /subnatureza-juridica/{codigoSubNaturezaJuridica}:
-    get:
-      tags:
-      - "Dimensões das Unidades Organizacionais"
-      summary: "Consulta Subnatureza Jurídica"
-      operationId: "SubnaturezaJuridica"
-      description: "Retorna as Subnaturezas Juridicas cadastradas no sistema. A Subnatureza é um detalhamento
-                    opcional da Natureza."
-      produces:
-        - "application/json"
-        - "application/xml"
-        - "text/csv"
-      parameters:
-      - in: "query"
-        name: "codigoNaturezaJuridica"
-        description: "Código de Natureza Jurídica. Se
-                      informado retorna uma lista com
-                      todas as subnaturezas cadastrados
-                      relacionadas a uma Natureza
-                      Juridica."
-        type: "integer"
-        default: '' 
-      - in: "query"
-        name: "ativo"
-        description: "Texto “SIM” para informar que
-                      retorne somente os tipos ativas ou
-                      “NAO” para trazer todas as
-                      subnaturezas jurídicas. Se não
-                      informado traz lista com todos."
-        type: "string"
-        enum: ["NAO" , "SIM"]
-      - in: "path"
-        name: "codigoSubNaturezaJuridica"
-        type: "integer"
-        description: "Código de Subnatureza Jurídica. Se
-                      não informado retorna uma lista com
-                      todos as subnaturezas jurídicas
-                      cadastrados"
-        required: false
-        default: '' 
-      responses:
-        200:
-          description: OK
-        102:
-          description: Sub Natureza Jurídica não encontrado(a).
-        103:
-          description: Campo(s) Código inválido(s).
-
-
-
+      
   /unidade-organizacional/{codigoUnidade}/versao:
     get:
       tags:
