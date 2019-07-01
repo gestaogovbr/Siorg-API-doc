@@ -102,8 +102,7 @@ paths:
                     Caso seja utilizado o “CodigoUnidade” retorna os dados completos de um órgão ou entidade do
                     governo. Todas as unidades organizacionais do órgão ou entidade são retornados. Se desejar que os
                     órgãos e entidades vinculadas sejam retornadas deve-se informar no parâmetro de
-                    “RetornarOrgaoEntidadeVinculados” em conjunto com o “CodigoUnidade” e todas as unidadesMP
-                    SEGEP
+                    “RetornarOrgaoEntidadeVinculados” em conjunto com o “CodigoUnidade” e todas as unidades
                     organizacionais dos órgãos e entidades vinculadas são retornados também. Se for passado
                     “RetornarOrgaoEntidadeVinculados” deve-se passar o parâmetro de “CodigoUnidade” também."
       operationId: "EstruturaOrganizacionalCompleta"
@@ -412,7 +411,7 @@ paths:
       tags:
       - "Dimensões das Unidades Organizacionais"
       summary: "Consulta Natureza Jurídica"
-      description: "Retorna o tipo especifico para a Natureza Jurídica cadastradas no sistema. As naturezas são aquelas definidas no
+      description: "Retorna um tipo especifico para a Natureza Jurídica cadastradas no sistema. As naturezas são aquelas definidas no
                     Decreto-lei 200: administração direta, autarquia, fundação, empresa pública e sociedade de economia
                     mista."
       produces:
@@ -486,7 +485,7 @@ paths:
       tags:
       - "Dimensões das Unidades Organizacionais"
       summary: "Consulta Subnatureza Jurídica"
-      description: "Retorna a Subnatureza Juridica cadastrada no sistema. A Subnatureza é um detalhamento
+      description: "Retorna uma Subnatureza Juridica cadastrada no sistema. A Subnatureza é um detalhamento
                     opcional da Natureza."
       produces:
         - "application/json"
@@ -562,7 +561,7 @@ paths:
       tags:
       - "Dimensões das Unidades Organizacionais"
       summary: "Consulta Poder"
-      description: "Retorna o tipo de Poder cadastradas no sistema"
+      description: "Retorna um tipo de Poder cadastradas no sistema"
       produces:
         - "application/json"
         - "application/xml"
@@ -620,7 +619,7 @@ paths:
       - "Dimensões das Unidades Organizacionais"
       summary: "Consulta Esfera"
       operationId: "Esfera"
-      description: "Retorna o tipo de Esfera cadastrada no sistema"
+      description: "Retorna um tipo de Esfera cadastrada no sistema"
       produces:
         - "application/json"
         - "application/xml"
@@ -674,7 +673,7 @@ paths:
       - "Dimensões das Unidades Organizacionais"
       summary: "Consulta Tipo de Unidade Organizacional"
       operationId: "TipoUnidade"
-      description: "Retorna o Tipo de Unidade Organizacional cadastrada no sistema"
+      description: "Retorna um Tipo de Unidade Organizacional cadastrada no sistema"
       produces:
         - "application/json"
         - "application/xml"
@@ -728,7 +727,7 @@ paths:
       tags:
       - "Dimensões das Unidades Organizacionais"
       summary: "Consulta Categoria de Unidade Organizacional"
-      description: "Retorna a Categoria de Unidade Organizacional cadastrada no sistema"
+      description: "Retorna uma Categoria de Unidade Organizacional cadastrada no sistema"
       produces:
         - "application/json"
         - "application/xml"
