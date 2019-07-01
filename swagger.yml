@@ -63,14 +63,17 @@ paths:
           name: "CodigoPoder"
           description: "Código do Poder"
           type: "integer"
+          default: 1
         - in: "query"
           name: "CodigoEsfera"
           description: "Código da Esfera"
           type: "integer"
+          default: 1
         - in: "query"
           name: "CodigoUnidade"
           description: "Código da Unidade Organizacional somente do tipo Órgão ou Entidade"
           type: "integer"      
+          default: 244
         - in: "query"
           name: "RetornarOrgaoEntidadeVinculados"
           description: "Parâmetro para escolher **SIM** se
@@ -115,14 +118,17 @@ paths:
         name: "CodigoPoder"
         description: "Código do Poder"
         type: "integer"
+        default: 1
       - in: "query"
         name: "CodigoEsfera"
         description: "Código da Esfera"
         type: "integer"
+        default: 1
       - in: "query"
         name: "CodigoUnidade"
         description: "Código da Unidade Organizacional somente do tipo Órgão ou Entidade"
         type: "integer"      
+        default: 244      
       - in: "query"
         name: "RetornarOrgaoEntidadeVinculados"
         description: "Parâmetro para escolher **SIM** se
@@ -161,6 +167,7 @@ paths:
         type: "integer"
         description: "Código da Unidade Organizacional"
         required: true
+        default: 244
       - in: "query"
         name: "retornarOrgaoEntidadeVinculados"
         type: "string"
@@ -192,10 +199,12 @@ paths:
         name: "CodigoPoder"
         description: "Código do Poder"
         type: "integer"
+        default: 1
       - in: "query"
         name: "CodigoEsfera"
         description: "Código da Esfera"
         type: "integer"
+        default: 1
       responses:
         200:
           description: OK
@@ -223,10 +232,12 @@ paths:
         name: "CodigoPoder"
         description: "Código do Poder"
         type: "integer"
+        default: 1
       - in: "query"
         name: "CodigoEsfera"
         description: "Código da Esfera"
         type: "integer"
+        default: 1
       responses:
         200:
           description: OK
@@ -253,12 +264,14 @@ paths:
         type: "integer"
         description: "Código da Unidade Organizacional"
         required: true
+        default: 244
       - in: "query"
         name: "versaoConsulta"
         description: "Versão específica da Unidade
                       Organizacional, se não informado
                       retorna versão atual da unidade."
         type: "string"
+        default: "125.0.0"
       responses:
         200:
           description: OK
@@ -284,6 +297,7 @@ paths:
         type: "integer"
         description: "Código da Unidade Organizacional"
         required: true
+        default: 244
       responses:
         200:
           description: OK
@@ -311,12 +325,14 @@ paths:
         type: "integer"
         description: "Código da Unidade Organizacional"
         required: true
+        default: 244
       - in: "query"
         name: "versaoConsulta"
         description: "Versão específica da Unidade
                       Organizacional, se não informado
                       retorna versão atual da unidade."
         type: "string"
+        default: "125.0.0"
       responses:
         200:
           description: OK
@@ -345,6 +361,7 @@ paths:
         type: "integer"
         description: "Código da Unidade Organizacional"
         required: true
+        default: 244
       responses:
         200:
           description: OK
@@ -371,6 +388,7 @@ paths:
         type: "integer"
         description: "Código da Unidade Organizacional"
         required: true
+        default: 244
       responses:
         200:
           description: OK
