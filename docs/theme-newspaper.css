@@ -1529,18 +1529,18 @@
 /**
  * Swagger UI Theme Overrides
  *
- * Theme: Monokai
+ * Theme: Newspaper
  * Author: Mark Ostrander
  * Github: https://github.com/ostranme/swagger-ui-themes
  */
 
  .swagger-ui .opblock.opblock-post {
    border-color: #DADFE1;
-   background: rgb(39, 40, 34);
+   background: rgba(34, 34, 34, .1);
  }
 
  .swagger-ui .opblock.opblock-post .opblock-summary-method {
-   background: #86C30D;
+   background: #222222;
  }
 
  .swagger-ui .opblock.opblock-post .opblock-summary {
@@ -1549,11 +1549,11 @@
 
  .swagger-ui .opblock.opblock-put {
    border-color: #DADFE1;
-   background: rgb(39, 40, 34);
+   background: rgba(34, 34, 34, .1);
  }
 
  .swagger-ui .opblock.opblock-put .opblock-summary-method {
-   background: #FD971F;
+   background: #222222;
  }
 
  .swagger-ui .opblock.opblock-put .opblock-summary {
@@ -1562,11 +1562,11 @@
 
  .swagger-ui .opblock.opblock-delete {
    border-color: #DADFE1;
-   background: rgb(39, 40, 34);
+   background: rgba(34, 34, 34, .1);
  }
 
  .swagger-ui .opblock.opblock-delete .opblock-summary-method {
-   background: #CB4876;
+   background: #222222;
  }
 
  .swagger-ui .opblock.opblock-delete .opblock-summary {
@@ -1575,11 +1575,11 @@
 
  .swagger-ui .opblock.opblock-get {
    border-color: #DADFE1;
-   background: rgb(39, 40, 34);
+   background: rgba(34, 34, 34, .1);
  }
 
  .swagger-ui .opblock.opblock-get .opblock-summary-method {
-   background: #1DB4D0;
+   background: #222222;
  }
 
  .swagger-ui .opblock.opblock-get .opblock-summary {
@@ -1588,11 +1588,11 @@
 
  .swagger-ui .opblock.opblock-patch {
    border-color: #DADFE1;
-   background: rgb(39, 40, 34);
+   background: rgba(34, 34, 34, .1);
  }
 
  .swagger-ui .opblock.opblock-patch .opblock-summary-method {
-   background: #D38042;
+   background: #222222;
  }
 
  .swagger-ui .opblock.opblock-patch .opblock-summary {
@@ -1601,11 +1601,11 @@
 
  .swagger-ui .opblock.opblock-head {
    border-color: #DADFE1;
-   background: rgb(39, 40, 34);
+   background: rgba(34, 34, 34, .1);
  }
 
  .swagger-ui .opblock.opblock-head .opblock-summary-method {
-   background: #F7CA18;
+   background: #222222;
  }
 
  .swagger-ui .opblock.opblock-head .opblock-summary {
@@ -1614,36 +1614,21 @@
 
  .swagger-ui .opblock.opblock-options {
    border-color: #DADFE1;
-   background: rgb(39, 40, 34);
+   background: rgba(34, 34, 34, .1);
  }
 
  .swagger-ui .opblock.opblock-options .opblock-summary-method {
-   background: #29B6F6;
+   background: #222222;
  }
 
  .swagger-ui .opblock.opblock-options .opblock-summary {
    border-color: #DADFE1;
  }
 
- .swagger-ui .opblock.opblock-deprecated {
-   opacity: .9;
-   border-color: #DADFE1;
-   background: rgb(39, 40, 34);
- }
-
- .swagger-ui .opblock.opblock-deprecated .opblock-summary-method {
-   background: #ebebeb
- }
-
- .swagger-ui .opblock.opblock-deprecated .opblock-summary {
-   border-color: #ebebeb
- }
-
  .swagger-ui .topbar {
    padding: 8px 30px;
-   background-color: #272822;
+   background-color: #222222;
  }
-
  .swagger-ui .topbar .download-url-wrapper input[type=text] {
    min-width: 350px;
    margin: 0;
@@ -1660,7 +1645,7 @@
    border-radius: 0 4px 4px 0;
    background: #DADFE1;
    font-family: Titillium Web, sans-serif;
-   color: #272822;
+   color: #222222;
  }
 
  .swagger-ui .info a {
@@ -1668,125 +1653,19 @@
    -webkit-transition: all .4s;
    transition: all .4s;
    font-family: Open Sans, sans-serif;
-   color: #272822;
+   color: #222222;
  }
 
  .swagger-ui .info a:hover {
-   color: #272822;
+   color: #222222;
  }
 
  .swagger-ui .btn.authorize {
    line-height: 1;
    display: inline;
-   color: #272822;
-   border-color: #272822;
+   color: #222222;
+   border-color: #222222;
  }
-
  .swagger-ui .btn.authorize svg {
-   fill: #272822;
+   fill: #222222;
  }
-
- .swagger-ui .opblock .opblock-summary-path, .swagger-ui .opblock .opblock-summary-path__deprecated {
-   font-size: 16px;
-   display: -webkit-box;
-   display: -ms-flexbox;
-   display: flex;
-   padding: 0 10px;
-   font-family: Source Code Pro, monospace;
-   font-weight: 600;
-   color: #ffffff;
-   -webkit-box-align: center;
-   -ms-flex-align: center;
-   align-items: center;
- }
-
- .swagger-ui .opblock .opblock-summary-description {
-   font-size: 13px;
-   -webkit-box-flex: 1;
-   -ms-flex: 1;
-   flex: 1;
-   font-family: Open Sans, sans-serif;
-   color: #ffffff;
- }
-
- .swagger-ui table thead tr td, .swagger-ui table thead tr th {
-   font-size: 12px;
-   font-weight: 700;
-   padding: 12px 0;
-   text-align: left;
-   border-bottom: 1px solid rgba(59, 65, 81, .2);
-   font-family: Open Sans, sans-serif;
-   color: #ffffff;
- }
-
- .swagger-ui .parameters-col_description p {
-   font-size: 14px;
-   margin: 0;
-   font-family: Open Sans, sans-serif;
-   color: #ffffff;
- }
-
- .swagger-ui .parameter__name {
-   font-size: 16px;
-   font-weight: 400;
-   font-family: Titillium Web, sans-serif;
-   color: #ffffff;
- }
-
- .swagger-ui .opblock .opblock-section-header label {
-   font-size: 12px;
-   font-weight: 700;
-   margin: 0;
-   font-family: Titillium Web, sans-serif;
-   color: #3b4151;
- }
-
- .swagger-ui .opblock .opblock-section-header h4 {
-   font-size: 14px;
-   margin: 0;
-   -webkit-box-flex: 1;
-   -ms-flex: 1;
-   flex: 1;
-   font-family: Titillium Web, sans-serif;
-   color: #3b4151;
- }
-
- .swagger-ui .opblock .opblock-summary-description {
-   font-size: 13px;
-   -webkit-box-flex: 1;
-   -ms-flex: 1;
-   flex: 1;
-   font-family: Open Sans, sans-serif;
-   color: #ffffff;
- }
-
- .swagger-ui .tab li {
-   font-size: 12px;
-   min-width: 100px;
-   min-width: 90px;
-   padding: 0;
-   cursor: pointer;
-   font-family: Titillium Web, sans-serif;
-   color: #ffffff;
- }
-
- .swagger-ui label {
-   font-size: 12px;
-   font-weight: 700;
-   margin: 0 0 5px;
-   font-family: Titillium Web, sans-serif;
-   color: #ffffff;
- }
-
- .swagger-ui .response-col_status {
-   font-size: 14px;
-   font-family: Open Sans, sans-serif;
-   color: #ffffff;
- }
-
- .swagger-ui .opblock-description-wrapper p, .swagger-ui .opblock-title_normal p {
-    font-size: 14px;
-    margin: 0;
-    font-family: Open Sans, sans-serif;
-    color: #ffffff;
-}
