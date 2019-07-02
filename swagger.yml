@@ -552,7 +552,7 @@ paths:
       - "Dimensões das Unidades Organizacionais"
       summary: "Consulta Poder"
       operationId: "Poder"
-      description: "Retorna os tipos de Poder cadastrados no sistema"
+      description: "Retorna os tipos de Poder cadastrados no sistema "
       produces:
         - "application/json"
         - "application/xml"
