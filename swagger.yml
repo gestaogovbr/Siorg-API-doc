@@ -1,855 +1,780 @@
-swagger: "2.0"
+openapi: 3.0.1
 info:
-  version: "1.2"
-  title: "Documentação da API do SIORG"
-  description: >
-                # 1. Informações gerais sobre o serviço
-                
-                ## 1.1 Objetivo
-                
-                Descrever novos serviços para o SIORG 
-                
-                ![Diagrama Entidade-Relacional dos dados da API](https://raw.githubusercontent.com/economiagovbr/Siorg-API-doc/80b2c208b9ed429695a6e3d6fef890b66bf267b6/assets/Modelagem.jpg)
-                
-                ## 1.5 Gestor do serviço
-
-                Coordenação – Geral de Gestão do Desenvolvimento e Manutenção de Sistemas – CGDMS/DESIN/SEGEP/MP
-                
-                Contato: cgdms.segep@planejamento.gov.br
-                
-                ## 1.6 Responsável técnico
-
-                Coordenação – Geral de Gestão do Desenvolvimento e Manutenção de Sistemas – CGDMS/DESIN/SEGEP/MP
-                
-                Contato: cgdms.segep@planejamento.gov.br
+  title: Documentação da API do SIORG
+  description: "# 1. Informações gerais sobre o serviço\n## 1.1 Objetivo\nDescrever\
+    \ novos serviços para o SIORG \n![Diagrama Entidade-Relacional dos dados da API](https://raw.githubusercontent.com/economiagovbr/Siorg-API-doc/80b2c208b9ed429695a6e3d6fef890b66bf267b6/assets/Modelagem.jpg)\n\
+    ## 1.5 Gestor do serviço\nCoordenação – Geral de Gestão do Desenvolvimento e Manutenç\
+    ão de Sistemas – CGDMS/DESIN/SEGEP/MP\nContato: cgdms.segep@planejamento.gov.br\n\
+    ## 1.6 Responsável técnico\nCoordenação – Geral de Gestão do Desenvolvimento e\
+    \ Manutenção de Sistemas – CGDMS/DESIN/SEGEP/MP\nContato: cgdms.segep@planejamento.gov.br\n"
   license:
-    name: "Apache 2.0"
-    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "estruturaorganizacional.dados.gov.br"
-basePath: "/doc"
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: "1.2"
+servers:
+- url: http://estruturaorganizacional.dados.gov.br/doc
 tags:
-- name: "Consulta dados dos Órgãos"
-  description: > 
-              [Incluir descrição melhor]
-- name: "Dimensões das Unidades Organizacionais" 
-- name: "Consultas de Histórico" 
-schemes:
-- "http"
+- name: Consulta dados dos Órgãos
+  description: |
+    [Incluir descrição melhor]
+- name: Dimensões das Unidades Organizacionais
+- name: Consultas de Histórico
 paths:
-
-
-
   /estrutura-organizacional:
     get:
       tags:
-      - "Consulta dados dos Órgãos"
-      summary: "Consulta Estrutura Organizacional Resumida"
-      description: >- 
-                    Retorna os *dados resumidos* de todas as **unidades organizacionais** do governo. Esse
-                    serviço retorna toda a estrutura do governo de forma resumida.
-                    Caso seja utilizado o “CodigoUnidade” retorna os dados resumidos de um órgão ou entidade do
-                    governo. Todas as unidades organizacionais do órgão ou entidade são retornados. Se desejar que os
-                    órgãos e entidades vinculadas sejam retornadas deve-se informar no parâmetro de
-                    “RetornarOrgaoEntidadeVinculados” em conjunto com o “CodigoUnidade” e todas as unidades
-                    organizacionais dos órgãos e entidades vinculadas são retornados também. Se for passado
-                    “RetornarOrgaoEntidadeVinculados” deve-se passar o parâmetro de “CodigoUnidade” também.
-      operationId: "EstruturaOrganizacionalResumida"
-      produces:
-      - "application/xml"
-      - "application/json"
-      - "application/wsdl"
+      - Consulta dados dos Órgãos
+      summary: Consulta Estrutura Organizacional Resumida
+      description: Retorna os *dados resumidos* de todas as **unidades organizacionais**
+        do governo. Esse serviço retorna toda a estrutura do governo de forma resumida.
+        Caso seja utilizado o “CodigoUnidade” retorna os dados resumidos de um órgão
+        ou entidade do governo. Todas as unidades organizacionais do órgão ou entidade
+        são retornados. Se desejar que os órgãos e entidades vinculadas sejam retornadas
+        deve-se informar no parâmetro de “RetornarOrgaoEntidadeVinculados” em conjunto
+        com o “CodigoUnidade” e todas as unidades organizacionais dos órgãos e entidades
+        vinculadas são retornados também. Se for passado “RetornarOrgaoEntidadeVinculados”
+        deve-se passar o parâmetro de “CodigoUnidade” também.
+      operationId: EstruturaOrganizacionalResumida
       parameters:
-        - in: "query"
-          name: "CodigoPoder"
-          description: "Código do Poder"
-          type: "integer"
+      - name: CodigoPoder
+        in: query
+        description: Código do Poder
+        schema:
+          type: string
           default: 1
-        - in: "query"
-          name: "CodigoEsfera"
-          description: "Código da Esfera"
-          type: "integer"
+      - name: CodigoEsfera
+        in: query
+        description: Código da Esfera
+        schema:
+          type: string
           default: 1
-        - in: "query"
-          name: "CodigoUnidade"
-          description: "Código da Unidade Organizacional somente do tipo Órgão ou Entidade"
-          type: "integer"      
+      - name: CodigoUnidade
+        in: query
+        description: Código da Unidade Organizacional somente do tipo Órgão ou Entidade
+        schema:
+          type: string
           default: 244
-        - in: "query"
-          name: "RetornarOrgaoEntidadeVinculados"
-          description: "Parâmetro para escolher **SIM** se
-                        retorna os órgãos vinculados ou
-                        **NAO** para não retornar. Caso o
-                        parâmetro não seja informado o
-                        resultado não retornará os órgãos e
-                        entidades vinculadas."
-          type: "string"
-          enum: ["NAO" , "SIM"]  
+      - name: RetornarOrgaoEntidadeVinculados
+        in: query
+        description: Parâmetro para escolher **SIM** se retorna os órgãos vinculados
+          ou **NAO** para não retornar. Caso o parâmetro não seja informado o resultado
+          não retornará os órgãos e entidades vinculadas.
+        schema:
+          type: string
+          enum:
+          - NAO
+          - SIM
       responses:
-        200:
-          description: OK
         102:
           description: CodigoUnidade não encontrado(a).
+          content: {}
         104:
           description: Unidade organizacional deve ser um órgão ou entidade
-
-
-
-
+          content: {}
+        200:
+          description: OK
+          content: {}
   /estrutura-organizacional/completa:
     get:
       tags:
-      - "Consulta dados dos Órgãos"
-      summary: "Consulta Estrutura Organizacional Completa"
-      description: "Retorna os dados completos de todas as unidades da estrutura organizacional do governo. Esse
-                    serviço retorna toda a estrutura do governo de forma completa.
-                    Caso seja utilizado o “CodigoUnidade” retorna os dados completos de um órgão ou entidade do
-                    governo. Todas as unidades organizacionais do órgão ou entidade são retornados. Se desejar que os
-                    órgãos e entidades vinculadas sejam retornadas deve-se informar no parâmetro de
-                    “RetornarOrgaoEntidadeVinculados” em conjunto com o “CodigoUnidade” e todas as unidades
-                    organizacionais dos órgãos e entidades vinculadas são retornados também. Se for passado
-                    “RetornarOrgaoEntidadeVinculados” deve-se passar o parâmetro de “CodigoUnidade” também."
-      operationId: "EstruturaOrganizacionalCompleta"
-      produces:
-        - "application/json"
-        - "application/xml"
-        - "text/csv"
+      - Consulta dados dos Órgãos
+      summary: Consulta Estrutura Organizacional Completa
+      description: Retorna os dados completos de todas as unidades da estrutura organizacional
+        do governo. Esse serviço retorna toda a estrutura do governo de forma completa.
+        Caso seja utilizado o “CodigoUnidade” retorna os dados completos de um órgão
+        ou entidade do governo. Todas as unidades organizacionais do órgão ou entidade
+        são retornados. Se desejar que os órgãos e entidades vinculadas sejam retornadas
+        deve-se informar no parâmetro de “RetornarOrgaoEntidadeVinculados” em conjunto
+        com o “CodigoUnidade” e todas as unidades organizacionais dos órgãos e entidades
+        vinculadas são retornados também. Se for passado “RetornarOrgaoEntidadeVinculados”
+        deve-se passar o parâmetro de “CodigoUnidade” também.
+      operationId: EstruturaOrganizacionalCompleta
       parameters:
-      - in: "query"
-        name: "CodigoPoder"
-        description: "Código do Poder"
-        type: "integer"
-        default: 1
-      - in: "query"
-        name: "CodigoEsfera"
-        description: "Código da Esfera"
-        type: "integer"
-        default: 1
-      - in: "query"
-        name: "CodigoUnidade"
-        description: "Código da Unidade Organizacional somente do tipo Órgão ou Entidade"
-        type: "integer"      
-        default: 244      
-      - in: "query"
-        name: "RetornarOrgaoEntidadeVinculados"
-        description: "Parâmetro para escolher **SIM** se
-                      retorna os órgãos vinculados ou
-                      **NAO** para não retornar. Caso o
-                      parâmetro não seja informado o
-                      resultado não retornará os órgãos e
-                      entidades vinculadas."
-        type: "string"
-        enum: ["NAO" , "SIM"]     
+      - name: CodigoPoder
+        in: query
+        description: Código do Poder
+        schema:
+          type: string
+          default: 1
+      - name: CodigoEsfera
+        in: query
+        description: Código da Esfera
+        schema:
+          type: string
+          default: 1
+      - name: CodigoUnidade
+        in: query
+        description: Código da Unidade Organizacional somente do tipo Órgão ou Entidade
+        schema:
+          type: string
+          default: 244
+      - name: RetornarOrgaoEntidadeVinculados
+        in: query
+        description: Parâmetro para escolher **SIM** se retorna os órgãos vinculados
+          ou **NAO** para não retornar. Caso o parâmetro não seja informado o resultado
+          não retornará os órgãos e entidades vinculadas.
+        schema:
+          type: string
+          enum:
+          - NAO
+          - SIM
       responses:
-        200:
-          description: OK
         102:
           description: CodigoUnidade não encontrado(a).
+          content: {}
         104:
-          description: Unidade organizacional deve ser um órgão ou entidade 2.2.3.4 URIs exemplificativas
-  
-
+          description: Unidade organizacional deve ser um órgão ou entidade 2.2.3.4
+            URIs exemplificativas
+          content: {}
+        200:
+          description: OK
+          content: {}
   /estrutura-organizacional/{codigoUnidade}/filha:
     get:
       tags:
-      - "Consulta dados dos Órgãos"
-      summary: "Consulta Estrutura Organizacional Filha"
-      operationId: "EstruturaOrganizacionalFilha"
-      description: "Retorna o primeiro nível abaixo da estrutura organizacional de uma unidade organizacional. Se
-                escolher retornar órgão e entidades vinculadas retorna as unidades organizacionais filhas e o topo do
-                órgão e entidade vinculados."
-      produces:
-        - "application/json"
-        - "application/xml"
-        - "text/csv"
+      - Consulta dados dos Órgãos
+      summary: Consulta Estrutura Organizacional Filha
+      description: Retorna o primeiro nível abaixo da estrutura organizacional de
+        uma unidade organizacional. Se escolher retornar órgão e entidades vinculadas
+        retorna as unidades organizacionais filhas e o topo do órgão e entidade vinculados.
+      operationId: EstruturaOrganizacionalFilha
       parameters:
-      - in: "path"
-        name: "codigoUnidade"
-        type: "integer"
-        description: "Código da Unidade Organizacional"
+      - name: codigoUnidade
+        in: path
+        description: Código da Unidade Organizacional
         required: true
-        default: 244
-      - in: "query"
-        name: "retornarOrgaoEntidadeVinculados"
-        type: "string"
-        enum: ["NAO" , "SIM"] 
+        schema:
+          type: string
+          default: 244
+      - name: retornarOrgaoEntidadeVinculados
+        in: query
+        schema:
+          type: string
+          enum:
+          - NAO
+          - SIM
       responses:
-        200:
-          description: OK
         102:
           description: Unidade Organizacional não encontrado(a).
-          
-
+          content: {}
+        200:
+          description: OK
+          content: {}
   /orgao-entidade:
     get:
       tags:
-      - "Consulta dados dos Órgãos"
-      summary: "Consulta Orgãos e Entidades Resumida"
-      description: "Retorna os dados resumidos de todos as unidades organizacionais que tem o tipo órgão ou entidade
-                    de acordo com os parâmetros. Esse serviço não retorna outras unidades organizacionais que não sejam
-                    do tipo órgão ou entidade. Caso um órgão ou entidade esteja vinculada a uma unidade organizacional
-                    com tipo diferente de 'Órgão' ou 'Entidade' essa unidade estará no resultado apenas para manter a
-                    estrutura organizacional correta do órgão."
-      operationId: "OrgaosEntidadesResumida"
-      produces:
-        - "application/json"
-        - "application/xml"
-        - "text/csv"
+      - Consulta dados dos Órgãos
+      summary: Consulta Orgãos e Entidades Resumida
+      description: Retorna os dados resumidos de todos as unidades organizacionais
+        que tem o tipo órgão ou entidade de acordo com os parâmetros. Esse serviço
+        não retorna outras unidades organizacionais que não sejam do tipo órgão ou
+        entidade. Caso um órgão ou entidade esteja vinculada a uma unidade organizacional
+        com tipo diferente de 'Órgão' ou 'Entidade' essa unidade estará no resultado
+        apenas para manter a estrutura organizacional correta do órgão.
+      operationId: OrgaosEntidadesResumida
       parameters:
-      - in: "query"
-        name: "CodigoPoder"
-        description: "Código do Poder"
-        type: "integer"
-        default: 1
-      - in: "query"
-        name: "CodigoEsfera"
-        description: "Código da Esfera"
-        type: "integer"
-        default: 1
+      - name: CodigoPoder
+        in: query
+        description: Código do Poder
+        schema:
+          type: string
+          default: 1
+      - name: CodigoEsfera
+        in: query
+        description: Código da Esfera
+        schema:
+          type: string
+          default: 1
       responses:
         200:
           description: OK
-
-
-
-
+          content: {}
   /orgao-entidade/completa:
     get:
       tags:
-      - "Consulta dados dos Órgãos"
-      summary: "Consulta Órgãos e Entidades Completo"
-      description: "Retorna os dados completos de todos as unidades organizacionais que tem o tipo órgão ou entidade
-                    de acordo com os parâmetros. Esse serviço não retorna outras unidades organizacionais que não sejam
-                    do tipo órgão ou entidade. Caso um órgão ou entidade esteja vinculada a uma unidade organizacional
-                    com tipo diferente de 'Órgão' ou 'Entidade' essa unidade estará no resultado apenas para manter a
-                    estrutura organizacional correta do órgão."
-      operationId: "OrgaosEntidadesCompleta"
-      produces:
-        - "application/json"
-        - "application/xml"
-        - "text/csv"
+      - Consulta dados dos Órgãos
+      summary: Consulta Órgãos e Entidades Completo
+      description: Retorna os dados completos de todos as unidades organizacionais
+        que tem o tipo órgão ou entidade de acordo com os parâmetros. Esse serviço
+        não retorna outras unidades organizacionais que não sejam do tipo órgão ou
+        entidade. Caso um órgão ou entidade esteja vinculada a uma unidade organizacional
+        com tipo diferente de 'Órgão' ou 'Entidade' essa unidade estará no resultado
+        apenas para manter a estrutura organizacional correta do órgão.
+      operationId: OrgaosEntidadesCompleta
       parameters:
-      - in: "query"
-        name: "CodigoPoder"
-        description: "Código do Poder"
-        type: "integer"
-        default: 1
-      - in: "query"
-        name: "CodigoEsfera"
-        description: "Código da Esfera"
-        type: "integer"
-        default: 1
+      - name: CodigoPoder
+        in: query
+        description: Código do Poder
+        schema:
+          type: string
+          default: 1
+      - name: CodigoEsfera
+        in: query
+        description: Código da Esfera
+        schema:
+          type: string
+          default: 1
       responses:
         200:
           description: OK
-
-
-
-
+          content: {}
   /unidade-organizacional/{codigoUnidade}:
     get:
       tags:
-      - "Consulta dados dos Órgãos"
-      summary: "Consultar Unidade Organizacional Resumida"
-      description: "Retorna os dados resumidos da Unidade Organizacional. O serviço retorna somente os dados da
-                    unidade organizacional passada como parâmetro. Essa unidade organizacionais pode ser de qualquer
-                    tipo de unidade."
-      operationId: "UnidadeOrganizacionalResumida"
-      produces:
-        - "application/xml"
-        - "application/json"
-        - "application/wsdl"
+      - Consulta dados dos Órgãos
+      summary: Consultar Unidade Organizacional Resumida
+      description: Retorna os dados resumidos da Unidade Organizacional. O serviço
+        retorna somente os dados da unidade organizacional passada como parâmetro.
+        Essa unidade organizacionais pode ser de qualquer tipo de unidade.
+      operationId: UnidadeOrganizacionalResumida
       parameters:
-      - in: "path"
-        name: "codigoUnidade"
-        type: "integer"
-        description: "Código da Unidade Organizacional"
+      - name: codigoUnidade
+        in: path
+        description: Código da Unidade Organizacional
         required: true
-        default: 244
-      - in: "query"
-        name: "versaoConsulta"
-        description: "Versão específica da Unidade
-                      Organizacional, se não informado
-                      retorna versão atual da unidade."
-        type: "string"
-        default: "125.0.0"
+        schema:
+          type: string
+          default: 244
+      - name: versaoConsulta
+        in: query
+        description: Versão específica da Unidade Organizacional, se não informado
+          retorna versão atual da unidade.
+        schema:
+          type: string
+          default: 125.0.0
       responses:
-        200:
-          description: OK
         102:
           description: Unidade Organizacional não encontrado(a).
-
-
-          
-
+          content: {}
+        200:
+          description: OK
+          content: {}
   /unidade-organizacional/endereco-contato/{codigoUnidade}:
     get:
       tags:
-      - "Consulta dados dos Órgãos"
-      summary: "Consulta Endereço e Contato"
-      operationId: "EnderecoContato"
-      produces:
-        - "application/json"
-        - "application/xml"
-        - "text/csv"
+      - Consulta dados dos Órgãos
+      summary: Consulta Endereço e Contato
+      operationId: EnderecoContato
       parameters:
-      - in: "path"
-        name: "codigoUnidade"
-        type: "integer"
-        description: "Código da Unidade Organizacional"
+      - name: codigoUnidade
+        in: path
+        description: Código da Unidade Organizacional
         required: true
-        default: 244
+        schema:
+          type: string
+          default: 244
       responses:
-        200:
-          description: OK
         102:
           description: Unidade Organizacional não encontrado(a).
+          content: {}
+        200:
+          description: OK
+          content: {}
         404:
           description: URL inválida ou não existente
-
+          content: {}
   /unidade-organizacional/{codigoUnidade}/estrutura:
     get:
       tags:
-      - "Consulta dados dos Órgãos"
-      summary: "Consulta Estrutura Unidade Organizacional"
-      operationId: "EstruturaUnidadeOrganizacional"
-      description: "Retorna apenas a informação da hierarquia da estrutura abaixo da unidade organizacional
-                pesquisada. Para descobrir o órgão topo de um “Poder” e “esfera” pode-se utilizar a consulta Consulta
-                Estrutura Organizacional Resumida"
-      produces:
-        - "application/json"
-        - "application/xml"
-        - "text/csv"
+      - Consulta dados dos Órgãos
+      summary: Consulta Estrutura Unidade Organizacional
+      description: Retorna apenas a informação da hierarquia da estrutura abaixo da
+        unidade organizacional pesquisada. Para descobrir o órgão topo de um “Poder”
+        e “esfera” pode-se utilizar a consulta Consulta Estrutura Organizacional Resumida
+      operationId: EstruturaUnidadeOrganizacional
       parameters:
-      - in: "path"
-        name: "codigoUnidade"
-        type: "integer"
-        description: "Código da Unidade Organizacional"
+      - name: codigoUnidade
+        in: path
+        description: Código da Unidade Organizacional
         required: true
-        default: 244
-      - in: "query"
-        name: "versaoConsulta"
-        description: "Versão específica da Unidade
-                      Organizacional, se não informado
-                      retorna versão atual da unidade."
-        type: "string"
-        default: "125.0.0"
+        schema:
+          type: string
+          default: 244
+      - name: versaoConsulta
+        in: query
+        description: Versão específica da Unidade Organizacional, se não informado
+          retorna versão atual da unidade.
+        schema:
+          type: string
+          default: 125.0.0
       responses:
-        200:
-          description: OK
         102:
           description: Unidade Organizacional não encontrado(a).
+          content: {}
         103:
-          description: Campo(s) Versão inválido(s).  
-
-
-
+          description: Campo(s) Versão inválido(s).
+          content: {}
+        200:
+          description: OK
+          content: {}
   /composicao-colegiado/{codigoUnidade}:
     get:
       tags:
-      - "Consulta dados dos Órgãos"
-      summary: "Consulta Integrantes Colegiado Resumido"
-      operationId: "IntegranteColegiadoResumido"
-      description: "Retorna os dados resumidos das unidades organizacionais ou não governamentais que compõem a
-                    unidade colegiada. O código informado como parâmetro de entrada deve ser de uma unidade colegiada."
-      produces:
-        - "application/json"
-        - "application/xml"
-        - "text/csv"
+      - Consulta dados dos Órgãos
+      summary: Consulta Integrantes Colegiado Resumido
+      description: Retorna os dados resumidos das unidades organizacionais ou não
+        governamentais que compõem a unidade colegiada. O código informado como parâmetro
+        de entrada deve ser de uma unidade colegiada.
+      operationId: IntegranteColegiadoResumido
       parameters:
-      - in: "path"
-        name: "codigoUnidade"
-        type: "integer"
-        description: "Código da Unidade Organizacional"
+      - name: codigoUnidade
+        in: path
+        description: Código da Unidade Organizacional
         required: true
-        default: 244
+        schema:
+          type: string
+          default: 244
       responses:
-        200:
-          description: OK
         102:
           description: Unidade Organizacional não encontrado(a).
-
-
-
+          content: {}
+        200:
+          description: OK
+          content: {}
   /composicao-colegiado/{codigoUnidade}/completa:
     get:
       tags:
-      - "Consulta dados dos Órgãos"
-      summary: "Consulta Integrantes Colegiado Completo"
-      operationId: "IntegranteColegiadoCompleto"
-      description: "Retorna os dados completos das unidades organizacionais ou não governamentais que compõem a
-                    unidade colegiada. O código informado como parâmetro de entrada deve ser de uma unidade colegiada."
-      produces:
-        - "application/json"
-        - "application/xml"
-        - "text/csv"
+      - Consulta dados dos Órgãos
+      summary: Consulta Integrantes Colegiado Completo
+      description: Retorna os dados completos das unidades organizacionais ou não
+        governamentais que compõem a unidade colegiada. O código informado como parâmetro
+        de entrada deve ser de uma unidade colegiada.
+      operationId: IntegranteColegiadoCompleto
       parameters:
-      - in: "path"
-        name: "codigoUnidade"
-        type: "integer"
-        description: "Código da Unidade Organizacional"
+      - name: codigoUnidade
+        in: path
+        description: Código da Unidade Organizacional
         required: true
-        default: 244
+        schema:
+          type: string
+          default: 244
       responses:
-        200:
-          description: OK
         102:
           description: Unidade Organizacional não encontrado(a).
-
-
+          content: {}
+        200:
+          description: OK
+          content: {}
   /natureza-juridica:
     get:
       tags:
-      - "Dimensões das Unidades Organizacionais"
-      summary: "Consulta Natureza Jurídica"
-      operationId: "NaturezaJuridica"
-      description: "Retorna os tipos de Natureza Jurídica cadastradas no sistema. As naturezas são aquelas definidas no
-                    Decreto-lei 200: administração direta, autarquia, fundação, empresa pública e sociedade de economia
-                    mista."
-      produces:
-        - "application/json"
-        - "application/xml"
-        - "text/csv"
+      - Dimensões das Unidades Organizacionais
+      summary: Consulta Natureza Jurídica
+      description: 'Retorna os tipos de Natureza Jurídica cadastradas no sistema.
+        As naturezas são aquelas definidas no Decreto-lei 200: administração direta,
+        autarquia, fundação, empresa pública e sociedade de economia mista.'
+      operationId: NaturezaJuridica
       parameters:
-      - in: "query"
-        name: "ativo"
-        description: "Texto “SIM” para informar que
-                      retorne somente as naturezas
-                      jurídicas ativas ou “NAO” para trazer todas as naturezas jurídicas. Se
-                      não informado traz lista com todas."
-        type: "string"
-        enum: ["NAO" , "SIM"] 
+      - name: ativo
+        in: query
+        description: Texto “SIM” para informar que retorne somente as naturezas jurídicas
+          ativas ou “NAO” para trazer todas as naturezas jurídicas. Se não informado
+          traz lista com todas.
+        schema:
+          type: string
+          enum:
+          - NAO
+          - SIM
       responses:
-        200:
-          description: OK
         102:
           description: NaturezaJuridica não encontrado(a).
-
+          content: {}
+        200:
+          description: OK
+          content: {}
   /natureza-juridica/{codigoNaturezaJuridica}:
     get:
       tags:
-      - "Dimensões das Unidades Organizacionais"
-      summary: "Consulta Natureza Jurídica"
-      description: "Retorna um tipo especifico para a Natureza Jurídica cadastradas no sistema. As naturezas são aquelas definidas no
-                    Decreto-lei 200: administração direta, autarquia, fundação, empresa pública e sociedade de economia
-                    mista."
-      produces:
-        - "application/json"
-        - "application/xml"
-        - "text/csv"
+      - Dimensões das Unidades Organizacionais
+      summary: Consulta Natureza Jurídica
+      description: 'Retorna um tipo especifico para a Natureza Jurídica cadastradas
+        no sistema. As naturezas são aquelas definidas no Decreto-lei 200: administração
+        direta, autarquia, fundação, empresa pública e sociedade de economia mista.'
       parameters:
-      - in: "path"
-        name: "codigoNaturezaJuridica"
-        type: "integer"
-        description: "Código da Natureza Jurídica. Se não
-                      informado retorna uma lista com
-                      todas as naturezas jurídicas
-                      cadastrados"
+      - name: codigoNaturezaJuridica
+        in: path
+        description: Código da Natureza Jurídica. Se não informado retorna uma lista
+          com todas as naturezas jurídicas cadastrados
         required: true
-        default: 3
-      - in: "query"
-        name: "ativo"
-        description: "Texto “SIM” para informar que
-                      retorne somente as naturezas
-                      jurídicas ativas ou “NAO” para trazer todas as naturezas jurídicas. Se
-                      não informado traz lista com todas."
-        type: "string"
-        enum: ["NAO" , "SIM"] 
+        schema:
+          type: string
+          default: 3
+      - name: ativo
+        in: query
+        description: Texto “SIM” para informar que retorne somente as naturezas jurídicas
+          ativas ou “NAO” para trazer todas as naturezas jurídicas. Se não informado
+          traz lista com todas.
+        schema:
+          type: string
+          enum:
+          - NAO
+          - SIM
       responses:
-        200:
-          description: OK
         102:
           description: NaturezaJuridica não encontrado(a).
-
+          content: {}
+        200:
+          description: OK
+          content: {}
   /subnatureza-juridica:
     get:
       tags:
-      - "Dimensões das Unidades Organizacionais"
-      summary: "Consulta Subnatureza Jurídica"
-      description: "Retorna as Subnaturezas Juridicas cadastradas no sistema. A Subnatureza é um detalhamento
-                    opcional da Natureza."
-      produces:
-        - "application/json"
-        - "application/xml"
-        - "text/csv"
+      - Dimensões das Unidades Organizacionais
+      summary: Consulta Subnatureza Jurídica
+      description: Retorna as Subnaturezas Juridicas cadastradas no sistema. A Subnatureza
+        é um detalhamento opcional da Natureza.
       parameters:
-      - in: "query"
-        name: "codigoNaturezaJuridica"
-        description: "Código de Natureza Jurídica. Se
-                      informado retorna uma lista com
-                      todas as subnaturezas cadastrados
-                      relacionadas a uma Natureza
-                      Juridica."
-        type: "integer"
-        default: 3 
-      - in: "query"
-        name: "ativo"
-        description: "Texto “SIM” para informar que
-                      retorne somente os tipos ativas ou
-                      “NAO” para trazer todas as
-                      subnaturezas jurídicas. Se não
-                      informado traz lista com todos."
-        type: "string"
-        enum: ["NAO" , "SIM"]
+      - name: codigoNaturezaJuridica
+        in: query
+        description: Código de Natureza Jurídica. Se informado retorna uma lista com
+          todas as subnaturezas cadastrados relacionadas a uma Natureza Juridica.
+        schema:
+          type: string
+          default: 3
+      - name: ativo
+        in: query
+        description: Texto “SIM” para informar que retorne somente os tipos ativas
+          ou “NAO” para trazer todas as subnaturezas jurídicas. Se não informado traz
+          lista com todos.
+        schema:
+          type: string
+          enum:
+          - NAO
+          - SIM
       responses:
-        200:
-          description: OK
         102:
           description: Sub Natureza Jurídica não encontrado(a).
+          content: {}
         103:
           description: Campo(s) Código inválido(s).
-
+          content: {}
+        200:
+          description: OK
+          content: {}
   /subnatureza-juridica/{codigoSubNaturezaJuridica}:
     get:
       tags:
-      - "Dimensões das Unidades Organizacionais"
-      summary: "Consulta Subnatureza Jurídica"
-      description: "Retorna uma Subnatureza Juridica cadastrada no sistema. A Subnatureza é um detalhamento
-                    opcional da Natureza."
-      produces:
-        - "application/json"
-        - "application/xml"
-        - "text/csv"
+      - Dimensões das Unidades Organizacionais
+      summary: Consulta Subnatureza Jurídica
+      description: Retorna uma Subnatureza Juridica cadastrada no sistema. A Subnatureza
+        é um detalhamento opcional da Natureza.
       parameters:
-      - in: "query"
-        name: "codigoNaturezaJuridica"
-        description: "Código de Natureza Jurídica. Se
-                      informado retorna uma lista com
-                      todas as subnaturezas cadastrados
-                      relacionadas a uma Natureza
-                      Juridica."
-        type: "integer"
-        required: false
-      - in: "query"
-        name: "ativo"
-        description: "Texto “SIM” para informar que
-                      retorne somente os tipos ativas ou
-                      “NAO” para trazer todas as
-                      subnaturezas jurídicas. Se não
-                      informado traz lista com todos."
-        type: "string"
-        enum: ["NAO" , "SIM"]
-      - in: "path"
-        name: "codigoSubNaturezaJuridica"
-        type: "integer"
-        description: "Código de Subnatureza Jurídica. Se
-                      não informado retorna uma lista com
-                      todos as subnaturezas jurídicas
-                      cadastrados"
+      - name: codigoNaturezaJuridica
+        in: query
+        description: Código de Natureza Jurídica. Se informado retorna uma lista com
+          todas as subnaturezas cadastrados relacionadas a uma Natureza Juridica.
+        schema:
+          type: string
+      - name: ativo
+        in: query
+        description: Texto “SIM” para informar que retorne somente os tipos ativas
+          ou “NAO” para trazer todas as subnaturezas jurídicas. Se não informado traz
+          lista com todos.
+        schema:
+          type: string
+          enum:
+          - NAO
+          - SIM
+      - name: codigoSubNaturezaJuridica
+        in: path
+        description: Código de Subnatureza Jurídica. Se não informado retorna uma
+          lista com todos as subnaturezas jurídicas cadastrados
         required: true
-        default: 16 
+        schema:
+          type: string
+          default: 16
       responses:
-        200:
-          description: OK
         102:
           description: Sub Natureza Jurídica não encontrado(a).
+          content: {}
         103:
           description: Campo(s) Código inválido(s).
-
-
+          content: {}
+        200:
+          description: OK
+          content: {}
   /poder:
     get:
       tags:
-      - "Dimensões das Unidades Organizacionais"
-      summary: "Consulta Poder"
-      operationId: "Poder"
-      description: "Retorna os tipos de Poder cadastrados no sistema "
-      produces:
-        - "application/json"
-        - "application/xml"
-        - "text/csv"
+      - Dimensões das Unidades Organizacionais
+      summary: Consulta Poder
+      description: 'Retorna os tipos de Poder cadastrados no sistema '
+      operationId: Poder
       parameters:
-      - in: "query"
-        name: "ativo"
-        description: "Texto “SIM” para informar que
-                      retorne somente os poderes ativos ou
-                      “NAO” para trazer todas os poderes.
-                      Se não informado traz lista com todos."
-        type: "string"
-        enum: ["NAO" , "SIM"] 
+      - name: ativo
+        in: query
+        description: Texto “SIM” para informar que retorne somente os poderes ativos
+          ou “NAO” para trazer todas os poderes. Se não informado traz lista com todos.
+        schema:
+          type: string
+          enum:
+          - NAO
+          - SIM
       responses:
-        200:
-          description: OK
         102:
           description: Poder não encontrado(a).
-
-
-
+          content: {}
+        200:
+          description: OK
+          content: {}
   /poder/{codigoPoder}:
     get:
       tags:
-      - "Dimensões das Unidades Organizacionais"
-      summary: "Consulta Poder"
-      description: "Retorna um tipo de Poder cadastradas no sistema"
-      produces:
-        - "application/json"
-        - "application/xml"
-        - "text/csv"
+      - Dimensões das Unidades Organizacionais
+      summary: Consulta Poder
+      description: Retorna um tipo de Poder cadastradas no sistema
       parameters:
-      - in: "path"
-        name: "codigoPoder"
-        type: "integer"
-        description: "Código do Poder."
+      - name: codigoPoder
+        in: path
+        description: Código do Poder.
         required: true
-        default: 1
-      - in: "query"
-        name: "ativo"
-        description: "Texto “SIM” para informar que
-                      retorne somente os poderes ativos ou
-                      “NAO” para trazer todas os poderes.
-                      Se não informado traz lista com todos."
-        type: "string"
-        enum: ["NAO" , "SIM"] 
+        schema:
+          type: string
+          default: 1
+      - name: ativo
+        in: query
+        description: Texto “SIM” para informar que retorne somente os poderes ativos
+          ou “NAO” para trazer todas os poderes. Se não informado traz lista com todos.
+        schema:
+          type: string
+          enum:
+          - NAO
+          - SIM
       responses:
-        200:
-          description: OK
         102:
           description: Poder não encontrado(a).
-
+          content: {}
+        200:
+          description: OK
+          content: {}
   /esfera:
     get:
       tags:
-      - "Dimensões das Unidades Organizacionais"
-      summary: "Consulta Esfera"
-      description: "Retorna os tipos de Esfera cadastradas no sistema"
-      produces:
-        - "application/json"
-        - "application/xml"
-        - "text/csv"
+      - Dimensões das Unidades Organizacionais
+      summary: Consulta Esfera
+      description: Retorna os tipos de Esfera cadastradas no sistema
       parameters:
-      - in: "query"
-        name: "ativo"
-        description: "Texto “SIM” para informar que
-                      retorne somente as esferas ativas ou
-                      “NAO” para trazer todas as
-                      esferas.Se não informado traz lista
-                      com todas."
-        type: "string"
-        enum: ["NAO" , "SIM"] 
+      - name: ativo
+        in: query
+        description: Texto “SIM” para informar que retorne somente as esferas ativas
+          ou “NAO” para trazer todas as esferas.Se não informado traz lista com todas.
+        schema:
+          type: string
+          enum:
+          - NAO
+          - SIM
       responses:
-        200:
-          description: OK
         102:
           description: Esfera não encontrado(a).
-
+          content: {}
+        200:
+          description: OK
+          content: {}
   /esfera/{codigoEsfera}:
     get:
       tags:
-      - "Dimensões das Unidades Organizacionais"
-      summary: "Consulta Esfera"
-      operationId: "Esfera"
-      description: "Retorna um tipo de Esfera cadastrada no sistema"
-      produces:
-        - "application/json"
-        - "application/xml"
-        - "text/csv"
+      - Dimensões das Unidades Organizacionais
+      summary: Consulta Esfera
+      description: Retorna um tipo de Esfera cadastrada no sistema
+      operationId: Esfera
       parameters:
-      - in: "path"
-        name: "codigoEsfera"
-        type: "integer"
-        description: "Código da Esfera. Se não informado
-                      retorna uma lista com todas as
-                      naturezas jurídicas cadastrados"
+      - name: codigoEsfera
+        in: path
+        description: Código da Esfera. Se não informado retorna uma lista com todas
+          as naturezas jurídicas cadastrados
         required: true
-        default: 1
-      - in: "query"
-        name: "ativo"
-        description: "Texto “SIM” para informar que
-                      retorne somente as esferas ativas ou
-                      “NAO” para trazer todas as
-                      esferas.Se não informado traz lista
-                      com todas."
-        type: "string"
-        enum: ["NAO" , "SIM"] 
+        schema:
+          type: string
+          default: 1
+      - name: ativo
+        in: query
+        description: Texto “SIM” para informar que retorne somente as esferas ativas
+          ou “NAO” para trazer todas as esferas.Se não informado traz lista com todas.
+        schema:
+          type: string
+          enum:
+          - NAO
+          - SIM
       responses:
-        200:
-          description: OK
         102:
           description: Esfera não encontrado(a).
-
+          content: {}
+        200:
+          description: OK
+          content: {}
   /tipo-unidade:
     get:
       tags:
-      - "Dimensões das Unidades Organizacionais"
-      summary: "Consulta Tipo de Unidade Organizacional"
-      description: "Retorna os Tipos de Unidade Organizacional cadastradas no sistema"
-      produces:
-        - "application/json"
-        - "application/xml"
-        - "text/csv"
+      - Dimensões das Unidades Organizacionais
+      summary: Consulta Tipo de Unidade Organizacional
+      description: Retorna os Tipos de Unidade Organizacional cadastradas no sistema
       responses:
-        200:
-          description: OK
         102:
           description: TipoUnidade não encontrado(a).
+          content: {}
         103:
-          description: Campo(s) Versão inválido(s).          
-
-
+          description: Campo(s) Versão inválido(s).
+          content: {}
+        200:
+          description: OK
+          content: {}
   /tipo-unidade/{codigoTipoUnidade}:
     get:
       tags:
-      - "Dimensões das Unidades Organizacionais"
-      summary: "Consulta Tipo de Unidade Organizacional"
-      operationId: "TipoUnidade"
-      description: "Retorna um Tipo de Unidade Organizacional cadastrada no sistema"
-      produces:
-        - "application/json"
-        - "application/xml"
-        - "text/csv"
+      - Dimensões das Unidades Organizacionais
+      summary: Consulta Tipo de Unidade Organizacional
+      description: Retorna um Tipo de Unidade Organizacional cadastrada no sistema
+      operationId: TipoUnidade
       parameters:
-      - in: "path"
-        name: "codigoTipoUnidade"
-        type: "string"
-        description: "CodigoTipoUnidade"
+      - name: codigoTipoUnidade
+        in: path
+        description: CodigoTipoUnidade
         required: true
-        default: "OR"
+        schema:
+          type: string
+          default: OR
       responses:
-        200:
-          description: OK
         102:
           description: TipoUnidade não encontrado(a).
+          content: {}
         103:
-          description: Campo(s) Versão inválido(s).          
-
+          description: Campo(s) Versão inválido(s).
+          content: {}
+        200:
+          description: OK
+          content: {}
   /categoria-unidade:
     get:
       tags:
-      - "Dimensões das Unidades Organizacionais"
-      summary: "Consulta Categoria de Unidade Organizacional"
-      operationId: "CategoriaUnidade"
-      description: "Retorna as Categoria de Unidade Organizacional cadastradas no sistema"
-      produces:
-        - "application/json"
-        - "application/xml"
-        - "text/csv"
+      - Dimensões das Unidades Organizacionais
+      summary: Consulta Categoria de Unidade Organizacional
+      description: Retorna as Categoria de Unidade Organizacional cadastradas no sistema
+      operationId: CategoriaUnidade
       parameters:
-      - in: "query"
-        name: "ativo"
-        description: "Texto “SIM” para informar que
-                      retorne somente as esferas ativas ou
-                      “NAO” para trazer todas as
-                      esferas.Se não informado traz lista
-                      com todas."
-        type: "string"
-        enum: ["NAO" , "SIM"] 
+      - name: ativo
+        in: query
+        description: Texto “SIM” para informar que retorne somente as esferas ativas
+          ou “NAO” para trazer todas as esferas.Se não informado traz lista com todas.
+        schema:
+          type: string
+          enum:
+          - NAO
+          - SIM
       responses:
-        200:
-          description: OK
         102:
           description: Categoria de Unidade não encontrado(a).
+          content: {}
         103:
           description: Campo(s) Versão inválido(s).
-
+          content: {}
+        200:
+          description: OK
+          content: {}
   /categoria-unidade/{codigoCategoriaUnidade}:
     get:
       tags:
-      - "Dimensões das Unidades Organizacionais"
-      summary: "Consulta Categoria de Unidade Organizacional"
-      description: "Retorna uma Categoria de Unidade Organizacional cadastrada no sistema"
-      produces:
-        - "application/json"
-        - "application/xml"
-        - "text/csv"
+      - Dimensões das Unidades Organizacionais
+      summary: Consulta Categoria de Unidade Organizacional
+      description: Retorna uma Categoria de Unidade Organizacional cadastrada no sistema
       parameters:
-      - in: "path"
-        name: "codigoCategoriaUnidade"
-        type: "integer"
-        description: "Código de categoria de unidade
-                      organizacional. Se não informado
-                      retorna uma lista com todos as
-                      categorias de unidade cadastrados"
+      - name: codigoCategoriaUnidade
+        in: path
+        description: Código de categoria de unidade organizacional. Se não informado
+          retorna uma lista com todos as categorias de unidade cadastrados
         required: true
-        default: 63
-      - in: "query"
-        name: "ativo"
-        description: "Texto “SIM” para informar que
-                      retorne somente as esferas ativas ou
-                      “NAO” para trazer todas as
-                      esferas.Se não informado traz lista
-                      com todas."
-        type: "string"
-        enum: ["NAO" , "SIM"] 
+        schema:
+          type: string
+          default: 63
+      - name: ativo
+        in: query
+        description: Texto “SIM” para informar que retorne somente as esferas ativas
+          ou “NAO” para trazer todas as esferas.Se não informado traz lista com todas.
+        schema:
+          type: string
+          enum:
+          - NAO
+          - SIM
       responses:
-        200:
-          description: OK
         102:
           description: Categoria de Unidade não encontrado(a).
+          content: {}
         103:
           description: Campo(s) Versão inválido(s).
-
-      
+          content: {}
+        200:
+          description: OK
+          content: {}
   /unidade-organizacional/{codigoUnidade}/versao:
     get:
       tags:
-      - "Consultas de Histórico"
-      summary: "Consulta Versão da Unidade Organizacional"
-      operationId: "VersaoUnidade"
-      description: "Retorna a versão anterior e posterior da versão informada da Unidade Organizacional. Se nenhuma
-                    versão é informada retorna a atual no campo VersaoConsulta e a anterior no campo VersaoAnterior.
-                    Caso seja informado a primeira versão do órgão ou entidade o valor de VersaoAnterior retornará vazio.
-                    Caso seja informado a última versão do órgão ou entidade o valor de VersaoPosterior retornará vazio."
-      produces:
-        - "application/json"
-        - "application/xml"
-        - "text/csv"
+      - Consultas de Histórico
+      summary: Consulta Versão da Unidade Organizacional
+      description: Retorna a versão anterior e posterior da versão informada da Unidade
+        Organizacional. Se nenhuma versão é informada retorna a atual no campo VersaoConsulta
+        e a anterior no campo VersaoAnterior. Caso seja informado a primeira versão
+        do órgão ou entidade o valor de VersaoAnterior retornará vazio. Caso seja
+        informado a última versão do órgão ou entidade o valor de VersaoPosterior
+        retornará vazio.
+      operationId: VersaoUnidade
       parameters:
-      - in: "path"
-        name: "codigoUnidade"
-        type: "integer"
-        description: "Código da Unidade Organizacional"
+      - name: codigoUnidade
+        in: path
+        description: Código da Unidade Organizacional
         required: true
-        default: 244
-      - in: "query"
-        name: "versaoConsulta"
-        description: "Versão da Unidade Organizacional
-                      de acordo com definido em
-                      TipoVersao."
-        type: "string"
+        schema:
+          type: string
+          default: 244
+      - name: versaoConsulta
+        in: query
+        description: Versão da Unidade Organizacional de acordo com definido em TipoVersao.
+        schema:
+          type: string
       responses:
-        200:
-          description: OK
         102:
           description: Unidade Organizacional não encontrado(a).
+          content: {}
         103:
           description: Campo(s) Versão inválido(s).
-
-
-
+          content: {}
+        200:
+          description: OK
+          content: {}
   /unidade-organizacional/{codigoUnidade}/alteradas:
     get:
       tags:
-      - "Consultas de Histórico"
-      summary: "Consulta Unidades Alteradas do Órgão"
-      operationId: "UnidadesAlteradasOrgao"
-      description: "Retorna uma lista de unidades organizacionais alteradas desde a versão passada. O CodigoUnidade
-                    deve ser do tipo Órgão ou Entidade. O serviço retorna uma listagem de unidades resumidas da versão de
-                    consulta até a versão atual."
-      produces:
-        - "application/json"
-        - "application/xml"
-        - "text/csv"
+      - Consultas de Histórico
+      summary: Consulta Unidades Alteradas do Órgão
+      description: Retorna uma lista de unidades organizacionais alteradas desde a
+        versão passada. O CodigoUnidade deve ser do tipo Órgão ou Entidade. O serviço
+        retorna uma listagem de unidades resumidas da versão de consulta até a versão
+        atual.
+      operationId: UnidadesAlteradasOrgao
       parameters:
-      - in: "path"
-        name: "codigoUnidade"
-        type: "integer"
-        description: "Código da Unidade Organizacional o
-                      código deve ser do tipo Órgão ou
-                      Entidade"
+      - name: codigoUnidade
+        in: path
+        description: Código da Unidade Organizacional o código deve ser do tipo Órgão
+          ou Entidade
         required: true
-        default: 244
-      - in: "query"
-        name: "versaoConsulta"
-        description: "Versão da Unidade Organizacional
-                      de acordo com definido em
-                      TipoVersao."
-        type: "string"
-        default: "124.0.0"
+        schema:
+          type: string
+          default: 244
+      - name: versaoConsulta
+        in: query
+        description: Versão da Unidade Organizacional de acordo com definido em TipoVersao.
+        schema:
+          type: string
+          default: 124.0.0
       responses:
-        200:
-          description: OK
         102:
           description: Unidade Organizacional não encontrado(a).
+          content: {}
         103:
           description: Campo(s) Versão inválido(s).
+          content: {}
         104:
-          description: Unidade organizacional deve ser um órgão ou entidade          
+          description: Unidade organizacional deve ser um órgão ou entidade
+          content: {}
+        200:
+          description: OK
+          content: {}
+components: {}
