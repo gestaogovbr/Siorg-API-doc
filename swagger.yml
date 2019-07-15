@@ -12,7 +12,7 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   version: "1.2"
 servers:
-- url: http://estruturaorganizacional.dados.gov.br/doc
+- url: https://estruturaorganizacional.dados.gov.br/doc
 tags:
 - name: Consulta dados dos Órgãos
   description: |
@@ -67,13 +67,13 @@ paths:
       responses:
         102:
           description: CodigoUnidade não encontrado(a).
-          content: {}
+          
         104:
           description: Unidade organizacional deve ser um órgão ou entidade
-          content: {}
+          
         200:
           description: OK
-          content: {}
+          
   /estrutura-organizacional/completa:
     get:
       tags:
@@ -121,14 +121,14 @@ paths:
       responses:
         102:
           description: CodigoUnidade não encontrado(a).
-          content: {}
+          
         104:
           description: Unidade organizacional deve ser um órgão ou entidade 2.2.3.4
             URIs exemplificativas
-          content: {}
+          
         200:
           description: OK
-          content: {}
+          
   /estrutura-organizacional/{codigoUnidade}/filha:
     get:
       tags:
@@ -156,10 +156,10 @@ paths:
       responses:
         102:
           description: Unidade Organizacional não encontrado(a).
-          content: {}
+          
         200:
           description: OK
-          content: {}
+          
   /orgao-entidade:
     get:
       tags:
@@ -188,7 +188,7 @@ paths:
       responses:
         200:
           description: OK
-          content: {}
+          
   /orgao-entidade/completa:
     get:
       tags:
@@ -217,7 +217,7 @@ paths:
       responses:
         200:
           description: OK
-          content: {}
+          
   /unidade-organizacional/{codigoUnidade}:
     get:
       tags:
@@ -245,10 +245,10 @@ paths:
       responses:
         102:
           description: Unidade Organizacional não encontrado(a).
-          content: {}
+          
         200:
           description: OK
-          content: {}
+          
   /unidade-organizacional/endereco-contato/{codigoUnidade}:
     get:
       tags:
@@ -266,13 +266,13 @@ paths:
       responses:
         102:
           description: Unidade Organizacional não encontrado(a).
-          content: {}
+          
         200:
           description: OK
-          content: {}
+          
         404:
           description: URL inválida ou não existente
-          content: {}
+          
   /unidade-organizacional/{codigoUnidade}/estrutura:
     get:
       tags:
@@ -300,13 +300,13 @@ paths:
       responses:
         102:
           description: Unidade Organizacional não encontrado(a).
-          content: {}
+          
         103:
           description: Campo(s) Versão inválido(s).
-          content: {}
+          
         200:
           description: OK
-          content: {}
+          
   /composicao-colegiado/{codigoUnidade}:
     get:
       tags:
@@ -327,10 +327,10 @@ paths:
       responses:
         102:
           description: Unidade Organizacional não encontrado(a).
-          content: {}
+          
         200:
           description: OK
-          content: {}
+          
   /composicao-colegiado/{codigoUnidade}/completa:
     get:
       tags:
@@ -351,10 +351,10 @@ paths:
       responses:
         102:
           description: Unidade Organizacional não encontrado(a).
-          content: {}
+          
         200:
           description: OK
-          content: {}
+          
   /natureza-juridica:
     get:
       tags:
@@ -378,10 +378,10 @@ paths:
       responses:
         102:
           description: NaturezaJuridica não encontrado(a).
-          content: {}
+          
         200:
           description: OK
-          content: {}
+          
   /natureza-juridica/{codigoNaturezaJuridica}:
     get:
       tags:
@@ -412,10 +412,10 @@ paths:
       responses:
         102:
           description: NaturezaJuridica não encontrado(a).
-          content: {}
+          
         200:
           description: OK
-          content: {}
+          
   /subnatureza-juridica:
     get:
       tags:
@@ -444,13 +444,13 @@ paths:
       responses:
         102:
           description: Sub Natureza Jurídica não encontrado(a).
-          content: {}
+          
         103:
           description: Campo(s) Código inválido(s).
-          content: {}
+          
         200:
           description: OK
-          content: {}
+          
   /subnatureza-juridica/{codigoSubNaturezaJuridica}:
     get:
       tags:
@@ -486,13 +486,13 @@ paths:
       responses:
         102:
           description: Sub Natureza Jurídica não encontrado(a).
-          content: {}
+          
         103:
           description: Campo(s) Código inválido(s).
-          content: {}
+          
         200:
           description: OK
-          content: {}
+          
   /poder:
     get:
       tags:
@@ -513,10 +513,10 @@ paths:
       responses:
         102:
           description: Poder não encontrado(a).
-          content: {}
+          
         200:
           description: OK
-          content: {}
+          
   /poder/{codigoPoder}:
     get:
       tags:
@@ -543,10 +543,10 @@ paths:
       responses:
         102:
           description: Poder não encontrado(a).
-          content: {}
+          
         200:
           description: OK
-          content: {}
+          
   /esfera:
     get:
       tags:
@@ -566,10 +566,10 @@ paths:
       responses:
         102:
           description: Esfera não encontrado(a).
-          content: {}
+          
         200:
           description: OK
-          content: {}
+          
   /esfera/{codigoEsfera}:
     get:
       tags:
@@ -598,10 +598,10 @@ paths:
       responses:
         102:
           description: Esfera não encontrado(a).
-          content: {}
+          
         200:
           description: OK
-          content: {}
+          
   /tipo-unidade:
     get:
       tags:
@@ -611,13 +611,13 @@ paths:
       responses:
         102:
           description: TipoUnidade não encontrado(a).
-          content: {}
+          
         103:
           description: Campo(s) Versão inválido(s).
-          content: {}
+          
         200:
           description: OK
-          content: {}
+          
   /tipo-unidade/{codigoTipoUnidade}:
     get:
       tags:
@@ -636,13 +636,13 @@ paths:
       responses:
         102:
           description: TipoUnidade não encontrado(a).
-          content: {}
+          
         103:
           description: Campo(s) Versão inválido(s).
-          content: {}
+          
         200:
           description: OK
-          content: {}
+          
   /categoria-unidade:
     get:
       tags:
@@ -663,13 +663,13 @@ paths:
       responses:
         102:
           description: Categoria de Unidade não encontrado(a).
-          content: {}
+          
         103:
           description: Campo(s) Versão inválido(s).
-          content: {}
+          
         200:
           description: OK
-          content: {}
+          
   /categoria-unidade/{codigoCategoriaUnidade}:
     get:
       tags:
@@ -697,13 +697,13 @@ paths:
       responses:
         102:
           description: Categoria de Unidade não encontrado(a).
-          content: {}
+          
         103:
           description: Campo(s) Versão inválido(s).
-          content: {}
+          
         200:
           description: OK
-          content: {}
+          
   /unidade-organizacional/{codigoUnidade}/versao:
     get:
       tags:
@@ -732,13 +732,13 @@ paths:
       responses:
         102:
           description: Unidade Organizacional não encontrado(a).
-          content: {}
+          
         103:
           description: Campo(s) Versão inválido(s).
-          content: {}
+          
         200:
           description: OK
-          content: {}
+          
   /unidade-organizacional/{codigoUnidade}/alteradas:
     get:
       tags:
@@ -767,14 +767,14 @@ paths:
       responses:
         102:
           description: Unidade Organizacional não encontrado(a).
-          content: {}
+          
         103:
           description: Campo(s) Versão inválido(s).
-          content: {}
+          
         104:
           description: Unidade organizacional deve ser um órgão ou entidade
-          content: {}
+          
         200:
           description: OK
-          content: {}
+          
 components: {}
