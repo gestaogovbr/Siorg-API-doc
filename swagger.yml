@@ -65,14 +65,21 @@ paths:
           - NAO
           - SIM
       responses:
+        200:
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string         
         102:
           description: CodigoUnidade não encontrado(a).
           
         104:
           description: Unidade organizacional deve ser um órgão ou entidade
-          
-        200:
-          description: OK
+           
           
   /estrutura-organizacional/completa:
     get:
@@ -119,15 +126,21 @@ paths:
           - NAO
           - SIM
       responses:
+        200:
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string 
         102:
           description: CodigoUnidade não encontrado(a).
           
         104:
           description: Unidade organizacional deve ser um órgão ou entidade 2.2.3.4
             URIs exemplificativas
-          
-        200:
-          description: OK
           
   /estrutura-organizacional/{codigoUnidade}/filha:
     get:
@@ -154,11 +167,18 @@ paths:
           - NAO
           - SIM
       responses:
+        200:
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string 
         102:
           description: Unidade Organizacional não encontrado(a).
           
-        200:
-          description: OK
           
   /orgao-entidade:
     get:
@@ -188,6 +208,13 @@ paths:
       responses:
         200:
           description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string 
           
   /orgao-entidade/completa:
     get:
@@ -217,6 +244,13 @@ paths:
       responses:
         200:
           description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string 
           
   /unidade-organizacional/{codigoUnidade}:
     get:
@@ -243,11 +277,18 @@ paths:
           type: string
           default: 125.0.0
       responses:
+        200:
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string 
         102:
           description: Unidade Organizacional não encontrado(a).
           
-        200:
-          description: OK
           
   /unidade-organizacional/endereco-contato/{codigoUnidade}:
     get:
@@ -264,11 +305,18 @@ paths:
           type: string
           default: 244
       responses:
-        102:
-          description: Unidade Organizacional não encontrado(a).
-          
         200:
           description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string 
+
+        102:
+          description: Unidade Organizacional não encontrado(a).
           
         404:
           description: URL inválida ou não existente
@@ -298,14 +346,22 @@ paths:
           type: string
           default: 125.0.0
       responses:
+        200:
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string 
+
         102:
           description: Unidade Organizacional não encontrado(a).
           
         103:
           description: Campo(s) Versão inválido(s).
           
-        200:
-          description: OK
           
   /composicao-colegiado/{codigoUnidade}:
     get:
@@ -325,11 +381,19 @@ paths:
           type: string
           default: 244
       responses:
-        102:
-          description: Unidade Organizacional não encontrado(a).
-          
         200:
           description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string 
+
+        102:
+          description: Unidade Organizacional não encontrado(a).
+
           
   /composicao-colegiado/{codigoUnidade}/completa:
     get:
@@ -349,11 +413,19 @@ paths:
           type: string
           default: 244
       responses:
-        102:
-          description: Unidade Organizacional não encontrado(a).
-          
         200:
           description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string 
+
+        102:
+          description: Unidade Organizacional não encontrado(a).
+
           
   /natureza-juridica:
     get:
@@ -376,11 +448,19 @@ paths:
           - NAO
           - SIM
       responses:
+        200:
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string 
+
         102:
           description: NaturezaJuridica não encontrado(a).
           
-        200:
-          description: OK
           
   /natureza-juridica/{codigoNaturezaJuridica}:
     get:
@@ -410,11 +490,19 @@ paths:
           - NAO
           - SIM
       responses:
+        200:
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string 
+
         102:
           description: NaturezaJuridica não encontrado(a).
           
-        200:
-          description: OK
           
   /subnatureza-juridica:
     get:
@@ -442,14 +530,22 @@ paths:
           - NAO
           - SIM
       responses:
+        200:
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string 
+
         102:
           description: Sub Natureza Jurídica não encontrado(a).
           
         103:
           description: Campo(s) Código inválido(s).
-          
-        200:
-          description: OK
+
           
   /subnatureza-juridica/{codigoSubNaturezaJuridica}:
     get:
@@ -484,14 +580,22 @@ paths:
           type: string
           default: 16
       responses:
+        200:
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string 
+
         102:
           description: Sub Natureza Jurídica não encontrado(a).
           
         103:
           description: Campo(s) Código inválido(s).
-          
-        200:
-          description: OK
+
           
   /poder:
     get:
@@ -511,11 +615,19 @@ paths:
           - NAO
           - SIM
       responses:
+        200:
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string 
+
         102:
           description: Poder não encontrado(a).
           
-        200:
-          description: OK
           
   /poder/{codigoPoder}:
     get:
@@ -541,11 +653,19 @@ paths:
           - NAO
           - SIM
       responses:
+        200:
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string 
+
         102:
           description: Poder não encontrado(a).
           
-        200:
-          description: OK
           
   /esfera:
     get:
@@ -564,11 +684,19 @@ paths:
           - NAO
           - SIM
       responses:
+        200:
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string 
+
         102:
           description: Esfera não encontrado(a).
           
-        200:
-          description: OK
           
   /esfera/{codigoEsfera}:
     get:
@@ -596,11 +724,19 @@ paths:
           - NAO
           - SIM
       responses:
-        102:
-          description: Esfera não encontrado(a).
-          
         200:
           description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string 
+
+        102:
+          description: Esfera não encontrado(a).
+
           
   /tipo-unidade:
     get:
@@ -609,14 +745,22 @@ paths:
       summary: Consulta Tipo de Unidade Organizacional
       description: Retorna os Tipos de Unidade Organizacional cadastradas no sistema
       responses:
+        200:
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string 
+
         102:
           description: TipoUnidade não encontrado(a).
           
         103:
           description: Campo(s) Versão inválido(s).
           
-        200:
-          description: OK
           
   /tipo-unidade/{codigoTipoUnidade}:
     get:
@@ -634,14 +778,23 @@ paths:
           type: string
           default: OR
       responses:
+        200:
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string 
+
         102:
           description: TipoUnidade não encontrado(a).
           
         103:
           description: Campo(s) Versão inválido(s).
           
-        200:
-          description: OK
+
           
   /categoria-unidade:
     get:
@@ -661,14 +814,22 @@ paths:
           - NAO
           - SIM
       responses:
+        200:
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string 
+
         102:
           description: Categoria de Unidade não encontrado(a).
           
         103:
           description: Campo(s) Versão inválido(s).
           
-        200:
-          description: OK
           
   /categoria-unidade/{codigoCategoriaUnidade}:
     get:
@@ -695,14 +856,22 @@ paths:
           - NAO
           - SIM
       responses:
+        200:
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string         
+
         102:
           description: Categoria de Unidade não encontrado(a).
           
         103:
           description: Campo(s) Versão inválido(s).
           
-        200:
-          description: OK
           
   /unidade-organizacional/{codigoUnidade}/versao:
     get:
@@ -730,14 +899,22 @@ paths:
         schema:
           type: string
       responses:
+        200:
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string 
+
         102:
           description: Unidade Organizacional não encontrado(a).
           
         103:
           description: Campo(s) Versão inválido(s).
-          
-        200:
-          description: OK
+
           
   /unidade-organizacional/{codigoUnidade}/alteradas:
     get:
@@ -765,6 +942,16 @@ paths:
           type: string
           default: 124.0.0
       responses:
+        200:
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string 
+
         102:
           description: Unidade Organizacional não encontrado(a).
           
@@ -773,8 +960,5 @@ paths:
           
         104:
           description: Unidade organizacional deve ser um órgão ou entidade
-          
-        200:
-          description: OK
-          
-components: {}
+
+
