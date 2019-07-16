@@ -70,10 +70,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: string
+                type: object
             application/json:
               schema:
-                type: string         
+                type: object         
         102:
           description: CodigoUnidade não encontrado(a).
           
@@ -131,10 +131,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: string
+                type: object
             application/json:
               schema:
-                type: string 
+                type: object 
         102:
           description: CodigoUnidade não encontrado(a).
           
@@ -172,10 +172,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: string
+                type: object
             application/json:
               schema:
-                type: string 
+                type: object 
         102:
           description: Unidade Organizacional não encontrado(a).
           
@@ -211,10 +211,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: string
+                type: object
             application/json:
               schema:
-                type: string 
+                type: object 
           
   /orgao-entidade/completa:
     get:
@@ -247,10 +247,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: string
+                type: object
             application/json:
               schema:
-                type: string 
+                type: object 
           
   /unidade-organizacional/{codigoUnidade}:
     get:
@@ -282,10 +282,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: string
+                type: object
             application/json:
               schema:
-                type: string 
+                type: object 
         102:
           description: Unidade Organizacional não encontrado(a).
           
@@ -310,10 +310,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: string
+                type: object
             application/json:
               schema:
-                type: string 
+                type: object 
 
         102:
           description: Unidade Organizacional não encontrado(a).
@@ -351,10 +351,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: string
+                type: object
             application/json:
               schema:
-                type: string 
+                type: object 
 
         102:
           description: Unidade Organizacional não encontrado(a).
@@ -386,10 +386,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: string
+                type: object
             application/json:
               schema:
-                type: string 
+                type: object 
 
         102:
           description: Unidade Organizacional não encontrado(a).
@@ -418,10 +418,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: string
+                type: object
             application/json:
               schema:
-                type: string 
+                type: object 
 
         102:
           description: Unidade Organizacional não encontrado(a).
@@ -453,10 +453,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: string
+                type: object
             application/json:
               schema:
-                type: string 
+                type: object 
 
         102:
           description: NaturezaJuridica não encontrado(a).
@@ -495,10 +495,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: string
+                type: object
             application/json:
               schema:
-                type: string 
+                type: object 
 
         102:
           description: NaturezaJuridica não encontrado(a).
@@ -535,10 +535,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: string
+                type: object
             application/json:
               schema:
-                type: string 
+                type: object 
 
         102:
           description: Sub Natureza Jurídica não encontrado(a).
@@ -585,10 +585,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: string
+                type: object
             application/json:
               schema:
-                type: string 
+                type: object 
 
         102:
           description: Sub Natureza Jurídica não encontrado(a).
@@ -620,10 +620,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: string
+                type: object
             application/json:
               schema:
-                type: string 
+                type: object 
 
         102:
           description: Poder não encontrado(a).
@@ -658,10 +658,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: string
+                type: object
             application/json:
               schema:
-                type: string 
+                type: object 
 
         102:
           description: Poder não encontrado(a).
@@ -689,10 +689,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: string
+                type: object
             application/json:
               schema:
-                type: string 
+                type: object 
 
         102:
           description: Esfera não encontrado(a).
@@ -729,10 +729,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: string
+                type: object
             application/json:
               schema:
-                type: string 
+                type: object 
 
         102:
           description: Esfera não encontrado(a).
@@ -750,10 +750,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: string
+                type: object
             application/json:
               schema:
-                type: string 
+                type: object 
 
         102:
           description: TipoUnidade não encontrado(a).
@@ -783,10 +783,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: string
+                type: object
             application/json:
               schema:
-                type: string 
+                type: object 
 
         102:
           description: TipoUnidade não encontrado(a).
@@ -819,10 +819,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: string
+                type: object
             application/json:
               schema:
-                type: string 
+                type: object 
 
         102:
           description: Categoria de Unidade não encontrado(a).
@@ -861,10 +861,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: string
+                type: object
             application/json:
               schema:
-                type: string         
+                type: object         
 
         102:
           description: Categoria de Unidade não encontrado(a).
@@ -904,10 +904,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: string
+                type: object
             application/json:
               schema:
-                type: string 
+                type: object 
 
         102:
           description: Unidade Organizacional não encontrado(a).
@@ -947,10 +947,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: string
+                type: object
             application/json:
               schema:
-                type: string 
+                type: object 
 
         102:
           description: Unidade Organizacional não encontrado(a).
