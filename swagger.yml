@@ -978,3 +978,72 @@ paths:
           description: Unidade organizacional deve ser um órgão ou entidade
 
 
+components:
+  schemas:
+    Servico:
+      type: object
+      properties:
+        codigoErro:
+          type: integer
+          format: int64
+        mensagem:
+          type: string
+        data:
+          type: string
+          format: date-time 
+        versaoServico:
+          type: string
+        ipRequisitante:
+          type: string
+        ticket: 
+          type: string
+      xml:
+        name: Servico
+    Unidade:
+      type: object
+      properties:
+        codigoUnidade:
+          type: string
+        codigoUnidadePai:
+          type: string
+        codigoOrgaoEntidade:
+          type: string
+        codigoTipoUnidade:
+          type: string
+        nome:
+          type: string
+        sigla:
+          type: string
+        codigoEsfera:
+          type: string
+        codigoPoder:
+          type: string
+        codigoNaturezaJuridica:
+          type: string
+        codigoSubNaturezaJuridica:
+          type: string
+        nivelNormatizacao:
+          type: string
+        versaoConsulta:
+          type: string
+        dataInicialVersaoConsulta:
+          type: string
+          format: date-time
+        dataFinalVersaoConsulta:
+          type: string
+          format: date-time
+        operacao:
+          type: string
+      xml:
+        name: Unidade
+    ResultadoConsultarEstruturaOrganizacionalResumida:
+      type: object
+      properties:
+        servico:
+          $ref: '#/components/schemas/Servico'
+        unidades:
+          type: array
+          items:
+            $ref: '#/components/schemas/Unidade'
+      xml:
+        name: resultadoConsultarEstruturaOrganizacionalResumida    
