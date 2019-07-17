@@ -67,13 +67,29 @@ paths:
       responses:
         200:
           description: OK
-          content:
-            application/xml:
+          content:  
+            application/json:  
               schema:
                 type: object
-            application/json:
+                properties:
+                  servico:
+                    type: object
+                  unidades:
+                    type: array
+                    items: object
+            application/xml:  
               schema:
-                type: object         
+                type: object
+                properties:
+                  servico:
+                    type: object
+                  unidades:
+                    type: array
+                    items: object
+                    xml:
+                      name: Teste     
+
+                    
         102:
           description: CodigoUnidade não encontrado(a).
           
