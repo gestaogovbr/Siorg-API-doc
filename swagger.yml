@@ -68,26 +68,12 @@ paths:
         200:
           description: OK
           content:  
-            application/json:  
-              schema:
-                type: object
-                properties:
-                  servico:
-                    type: object
-                  unidades:
-                    type: array
-                    items: object
             application/xml:  
               schema:
-                type: object
-                properties:
-                  servico:
-                    type: object
-                  unidades:
-                    type: array
-                    items: object
-                    xml:
-                      name: Teste     
+                $ref: '#/components/schemas/ResultadoConsultarEstruturaOrganizacionalResumida'     
+            application/json:  
+              schema:
+                $ref: '#/components/schemas/ResultadoConsultarEstruturaOrganizacionalResumida'     
 
                     
         102:
@@ -989,8 +975,7 @@ components:
         mensagem:
           type: string
         data:
-          type: string
-          format: date-time 
+          type: string 
         versaoServico:
           type: string
         ipRequisitante:
@@ -1028,10 +1013,8 @@ components:
           type: string
         dataInicialVersaoConsulta:
           type: string
-          format: date-time
         dataFinalVersaoConsulta:
           type: string
-          format: date-time
         operacao:
           type: string
       xml:
