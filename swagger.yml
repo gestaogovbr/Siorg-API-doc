@@ -13,6 +13,7 @@ info:
   version: "1.2"
 servers:
 - url: https://estruturaorganizacional.dados.gov.br/doc
+- url: http://estruturaorganizacional.dados.gov.br/doc
 tags:
 - name: Consulta dados dos Órgãos
   description: |
@@ -1149,15 +1150,11 @@ components:
         name: resultadoConsultarEstruturaOrganizacionalFilha
 
     ResultadoConsultarOrgaosEntidadesResumida:
-      type: object
-      properties:
-        $ref: '#/components/schemas/ResultadoConsultarEstruturaOrganizacionalResumida'
+      $ref: '#/components/schemas/ResultadoConsultarEstruturaOrganizacionalResumida'
       xml:
         name: resultadoConsultarOrgaosEntidadesResumida
         
     ResultadoConsultarOrgaosEntidadesCompleta:
-      type: object
-      properties:
-        $ref: '#/components/schemas/ResultadoConsultarEstruturaOrganizacionalCompleta'
+      $ref: '#/components/schemas/ResultadoConsultarEstruturaOrganizacionalCompleta'
       xml:
         name: resultadoConsultarOrgaosEntidadesCompleta
