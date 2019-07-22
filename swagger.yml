@@ -130,13 +130,14 @@ paths:
       responses:
         200:
           description: OK
-          content:
-            application/xml:
+          content:  
+            application/xml:  
               schema:
-                type: object
-            application/json:
+                $ref: '#/components/schemas/ResultadoConsultarEstruturaOrganizacionalCompleta'     
+            application/json:  
               schema:
-                type: object 
+                $ref: '#/components/schemas/ResultadoConsultarEstruturaOrganizacionalCompleta'     
+
         102:
           description: CodigoUnidade não encontrado(a).
           
@@ -171,13 +172,14 @@ paths:
       responses:
         200:
           description: OK
-          content:
-            application/xml:
+          content:  
+            application/xml:  
               schema:
-                type: object
-            application/json:
+                $ref: '#/components/schemas/ResultadoConsultarEstruturaOrganizacionalFilha'     
+            application/json:  
               schema:
-                type: object 
+                $ref: '#/components/schemas/ResultadoConsultarEstruturaOrganizacionalFilha'     
+
         102:
           description: Unidade Organizacional não encontrado(a).
           
@@ -1019,6 +1021,79 @@ components:
           type: string
       xml:
         name: Unidade
+
+    Contato:
+      type: object
+      properties:
+        telefone:
+          type: array
+          items: string
+        email:
+          type: array
+          items: string
+        site:
+          type: array
+          items:
+            $ref: '#/components/schemas/Site'
+          
+    Site:
+      type: object
+      properties:
+        tipo:
+          type: string
+        site:
+          type: string
+        outroTipoSite:
+          type:
+            string
+
+    Endereco:
+        type: object
+        properties:
+          logradouro: string
+          numero: string
+          complemento:  string
+          bairro: string 
+          cep:  string 
+          uf: string 
+          municipio:  string 
+          pais: string 
+          tipoEndereco: string 
+          horarioDeFuncionamento: string 
+
+    UnidadeCompleta:
+      type: object
+      properties:
+        UnidadeCompleta:
+          $ref: '#/components/schemas/Unidade'
+          regulamentoEspecifico:
+            type: string
+          codigoCategoriaUnidade:
+            type: string
+          competencia:
+            type: string
+          finalidade:
+            type: string
+          missao:
+            type: string
+          descricaoAtoNormativo:
+            type: string
+          contato:
+            type: array
+            items: 
+              $ref: '#/components/schemas/Contato'
+          areaAtuacao:
+            type: string
+          atoNormativo:
+            type: string
+          endereco:
+            type: array
+            items: 
+              $ref: '#/components/schemas/Endereco'
+        xml:
+          name: UnidadeCompleta
+
+        
     ResultadoConsultarEstruturaOrganizacionalResumida:
       type: object
       properties:
@@ -1030,3 +1105,27 @@ components:
             $ref: '#/components/schemas/Unidade'
       xml:
         name: resultadoConsultarEstruturaOrganizacionalResumida    
+
+    ResultadoConsultarEstruturaOrganizacionalCompleta:
+      type: object
+      properties:
+        servico:
+          $ref: '#/components/schemas/Servico'
+        unidade:
+          type: array
+          items:
+            $ref: '#/components/schemas/UnidadeCompleta'
+      xml:
+        name: resultadoConsultarEstruturaOrganizacionalCompleta
+
+    ResultadoConsultarEstruturaOrganizacionalFilha:
+      type: object
+      properties:
+        servico:
+          $ref: '#/components/schemas/Servico'
+        unidade:
+          type: array
+          items:
+            $ref: '#/components/schemas/UnidadeCompleta'
+      xml:
+        name: resultadoConsultarEstruturaOrganizacionalFilha
