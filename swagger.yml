@@ -212,13 +212,14 @@ paths:
       responses:
         200:
           description: OK
-          content:
-            application/xml:
+          content:  
+            application/xml:  
               schema:
-                type: object
-            application/json:
+                $ref: '#/components/schemas/ResultadoConsultarOrgaosEntidadesResumida'     
+            application/json:  
               schema:
-                type: object 
+                $ref: '#/components/schemas/ResultadoConsultarOrgaosEntidadesResumida'     
+ 
           
   /orgao-entidade/completa:
     get:
@@ -248,13 +249,14 @@ paths:
       responses:
         200:
           description: OK
-          content:
-            application/xml:
+          content:  
+            application/xml:  
               schema:
-                type: object
-            application/json:
+                $ref: '#/components/schemas/ResultadoConsultarOrgaosEntidadesResumida'     
+            application/json:  
               schema:
-                type: object 
+                $ref: '#/components/schemas/ResultadoConsultarOrgaosEntidadesResumida'     
+ 
           
   /unidade-organizacional/{codigoUnidade}:
     get:
@@ -986,6 +988,7 @@ components:
           type: string
       xml:
         name: Servico
+
     Unidade:
       type: object
       properties:
@@ -1085,13 +1088,28 @@ components:
           areaAtuacao:
             type: string
           atoNormativo:
-            type: string
+            type: object
+            properties:
+              $ref: '#/components/schemas/AtoNormativo'
           endereco:
             type: array
             items: 
               $ref: '#/components/schemas/Endereco'
         xml:
           name: UnidadeCompleta
+
+
+    AtoNormativo:
+      type: object
+      properties:
+        tipoAto:  string
+        codigoUnidade:  string
+        numero: string
+        dataAssinatura: string
+        dataPublicacao: string
+        ementa: string
+        url:  string
+
 
         
     ResultadoConsultarEstruturaOrganizacionalResumida:
@@ -1129,3 +1147,17 @@ components:
             $ref: '#/components/schemas/UnidadeCompleta'
       xml:
         name: resultadoConsultarEstruturaOrganizacionalFilha
+
+    ResultadoConsultarOrgaosEntidadesResumida:
+      type: object
+      properties:
+        $ref: '#/components/schemas/ResultadoConsultarEstruturaOrganizacionalResumida'
+      xml:
+        name: resultadoConsultarOrgaosEntidadesResumida
+        
+    ResultadoConsultarOrgaosEntidadesCompleta:
+      type: object
+      properties:
+        $ref: '#/components/schemas/ResultadoConsultarEstruturaOrganizacionalCompleta'
+      xml:
+        name: resultadoConsultarOrgaosEntidadesCompleta
