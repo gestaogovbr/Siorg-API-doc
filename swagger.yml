@@ -542,10 +542,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: object
+                $ref: '#/components/schemas/ResultadoConsultarSubNaturezaJuridica'
             application/json:
               schema:
-                type: object 
+                $ref: '#/components/schemas/ResultadoConsultarSubNaturezaJuridica'
 
         102:
           description: Sub Natureza Jurídica não encontrado(a).
@@ -592,10 +592,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: object
+                $ref: '#/components/schemas/ResultadoConsultarSubNaturezaJuridica'
             application/json:
               schema:
-                type: object 
+                $ref: '#/components/schemas/ResultadoConsultarSubNaturezaJuridica'
 
         102:
           description: Sub Natureza Jurídica não encontrado(a).
@@ -1054,10 +1054,10 @@ components:
     SubNaturezaJuridica:
       type: object
       properties:
-      codigoNaturezaJuridica: string
-      codigoSubNaturezaJuridica: integer
-      descricaoSubNaturezaJuridica: string
-      ativo: string
+        codigoNaturezaJuridica: string
+        codigoSubNaturezaJuridica: integer
+        descricaoSubNaturezaJuridica: string
+        ativo: string
 
     Endereco:
         type: object
