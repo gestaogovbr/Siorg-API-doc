@@ -757,10 +757,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: object
+                $ref: '#/components/schemas/ResultadoConsultarTipoUnidade'
             application/json:
               schema:
-                type: object 
+                $ref: '#/components/schemas/ResultadoConsultarTipoUnidade'
 
         102:
           description: TipoUnidade não encontrado(a).
@@ -790,10 +790,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: object
+                $ref: '#/components/schemas/ResultadoConsultarTipoUnidade'
             application/json:
               schema:
-                type: object 
+                $ref: '#/components/schemas/ResultadoConsultarTipoUnidade'
 
         102:
           description: TipoUnidade não encontrado(a).
@@ -826,10 +826,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: object
+                $ref: '#/components/schemas/ResultadoConsultarCategoriaUnidade'
             application/json:
               schema:
-                type: object 
+                $ref: '#/components/schemas/ResultadoConsultarCategoriaUnidade'
 
         102:
           description: Categoria de Unidade não encontrado(a).
@@ -868,10 +868,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: object
+                $ref: '#/components/schemas/ResultadoConsultarCategoriaUnidade'
             application/json:
               schema:
-                type: object         
+                $ref: '#/components/schemas/ResultadoConsultarCategoriaUnidade'   
 
         102:
           description: Categoria de Unidade não encontrado(a).
@@ -1066,16 +1066,26 @@ components:
     Endereco:
         type: object
         properties:
-          logradouro: string
-          numero: string
-          complemento:  string
-          bairro: string 
-          cep:  string 
-          uf: string 
-          municipio:  string 
-          pais: string 
-          tipoEndereco: string 
-          horarioDeFuncionamento: string 
+          logradouro:   
+            type: string
+          numero:   
+            type: string
+          complemento:    
+            type: string
+          bairro:   
+            type: string 
+          cep:    
+            type: string 
+          uf:   
+            type: string 
+          municipio:    
+            type: string 
+          pais:   
+            type: string 
+          tipoEndereco:   
+            type: string 
+          horarioDeFuncionamento:   
+            type: string 
 
     UnidadeCompleta:
       type: object
@@ -1115,13 +1125,20 @@ components:
     AtoNormativo:
       type: object
       properties:
-        tipoAto:  string
-        codigoUnidade:  string
-        numero: string
-        dataAssinatura: string
-        dataPublicacao: string
-        ementa: string
-        url:  string
+        tipoAto:  
+          type: string
+        codigoUnidade:   
+          type: string
+        numero:  
+          type: string
+        dataAssinatura:  
+          type: string
+        dataPublicacao:  
+          type: string
+        ementa:  
+          type: string
+        url:   
+          type: string
 
 
         
@@ -1172,13 +1189,13 @@ components:
             type: object
 
     NaturezaJuridica:
-      type: object
-      properties:
-        codigoNaturezaJuridica: 
-          type: integer
-        descricaoNaturezaJuridica: 
-          type: string
-        ativo: 
+      typeobject: object
+      propobjecterties:
+        coobjectdigoNaturezaJuridica: 
+          objecttype: integer
+        deobjectscricaoNaturezaJuridica: 
+          objecttype: string
+        atobjectivo: 
           type: string
 
     Poder:
@@ -1197,6 +1214,24 @@ components:
         codigoPoder:
           type: integer 
         descricaoPoder:
+          type: string
+        ativo:
+          type: string
+
+    TipoUnidade:
+      type: object
+      properties:
+        codigoTipoUnidade:
+          type: integer 
+        descricaoTipoUnidade:
+          type: string
+
+    CategoriaUnidade:
+      type: object
+      properties:
+        codigoCategoriaUnidade:
+          type: integer 
+        descricaoCategoriaUnidade:
           type: string
         ativo:
           type: string
@@ -1274,3 +1309,27 @@ components:
             $ref: '#/components/schemas/Esfera'                   
       xml:
         name: resultadoConsultarEsfera
+    
+    ResultadoConsultarTipoUnidade:
+      type: object
+      properties:
+        servico:
+          $ref: '#/components/schemas/Servico'
+        tipoUnidade:
+          type: array
+          items:
+            $ref: '#/components/schemas/TipoUnidade'        
+      xml:
+        name: resultadoConsultarTipoUnidade
+
+    ResultadoConsultarCategoriaUnidade:
+      type: object
+      properties:
+        servico:
+          $ref: '#/components/schemas/Servico'
+        categoriaUnidade:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoriaUnidade'    
+      xml:
+        name: resultadoConsultarCategoriaUnidade
