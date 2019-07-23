@@ -289,10 +289,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: object
+                $ref: '#/components/schemas/ResultadoConsultarUnidadeResumida'
             application/json:
               schema:
-                type: object 
+                $ref: '#/components/schemas/ResultadoConsultarUnidadeResumida'
         102:
           description: Unidade Organizacional não encontrado(a).
           
@@ -358,10 +358,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: object
+                $ref: '#/components/schemas/ResultadoConsultarEstruturaUnidadeOrganizacional'
             application/json:
               schema:
-                type: object 
+                $ref: '#/components/schemas/ResultadoConsultarEstruturaUnidadeOrganizacional'
 
         102:
           description: Unidade Organizacional não encontrado(a).
@@ -460,10 +460,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: object
+                $ref:  '#/components/schemas/ResultadoConsultarNaturezaJuridica'
             application/json:
               schema:
-                type: object 
+                $ref:  '#/components/schemas/ResultadoConsultarNaturezaJuridica' 
 
         102:
           description: NaturezaJuridica não encontrado(a).
@@ -502,10 +502,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: object
+                $ref:  '#/components/schemas/ResultadoConsultarNaturezaJuridica'
             application/json:
               schema:
-                type: object 
+                $ref:  '#/components/schemas/ResultadoConsultarNaturezaJuridica' 
 
         102:
           description: NaturezaJuridica não encontrado(a).
@@ -1051,6 +1051,14 @@ components:
           type:
             string
 
+    SubNaturezaJuridica:
+      type: object
+      properties:
+      codigoNaturezaJuridica: string
+      codigoSubNaturezaJuridica: integer
+      descricaoSubNaturezaJuridica: string
+      ativo: string
+
     Endereco:
         type: object
         properties:
@@ -1096,8 +1104,8 @@ components:
             type: array
             items: 
               $ref: '#/components/schemas/Endereco'
-        xml:
-          name: UnidadeCompleta
+      xml:
+        name: UnidadeCompleta
 
 
     AtoNormativo:
@@ -1148,6 +1156,27 @@ components:
             $ref: '#/components/schemas/UnidadeCompleta'
       xml:
         name: resultadoConsultarEstruturaOrganizacionalFilha
+      
+    Estrutura:
+      type: object
+      properties:
+        codigoUnidade: 
+          type: string
+        estrutura:
+          type: array
+          items: 
+            type: object
+
+    NaturezaJuridica:
+      type: object
+      properties:
+        codigoNaturezaJuridica: 
+          type: integer
+        descricaoNaturezaJuridica: 
+          type: string
+        ativo: 
+          type: string
+
 
     ResultadoConsultarOrgaosEntidadesResumida:
       $ref: '#/components/schemas/ResultadoConsultarEstruturaOrganizacionalResumida'
@@ -1158,3 +1187,43 @@ components:
       $ref: '#/components/schemas/ResultadoConsultarEstruturaOrganizacionalCompleta'
       xml:
         name: resultadoConsultarOrgaosEntidadesCompleta
+
+    ResultadoConsultarUnidadeResumida:
+      type: object
+      properties:
+        servico:
+          $ref: '#/components/schemas/Servico'
+        unidade:
+          $ref: '#/components/schemas/Unidade'
+      xml:
+        name: resultadoConsultarUnidadeResumida
+
+    ResultadoConsultarEstruturaUnidadeOrganizacional:
+      type: object
+      properties:
+        servico:
+          $ref: '#/components/schemas/Servico'
+        estrutura:
+          $ref: '#/components/schemas/Estrutura'
+      xml: 
+        name: resultadoConsultarEstruturaUnidadeOrganizacional
+
+    ResultadoConsultarNaturezaJuridica:
+      type: object
+      properties:
+        servico:
+          $ref: '#/components/schemas/Servico'
+        naturezaJuridica:
+          $ref: '#/components/schemas/NaturezaJuridica'
+      xml:
+        name: resultadoConsultarNaturezaJuridica
+
+    ResultadoConsultarSubNaturezaJuridica:
+      type: object
+      properties:
+        servico:
+          $ref: '#/components/schemas/Servico'
+        naturezaJuridica:
+          $ref: '#/components/schemas/SubNaturezaJuridica'
+      xml:
+        name: resultadoConsultarSubNaturezaJuridica
