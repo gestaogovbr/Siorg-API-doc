@@ -627,10 +627,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: object
+                $ref: '#/components/schemas/ResultadoConsultarPoder'
             application/json:
               schema:
-                type: object 
+                $ref: '#/components/schemas/ResultadoConsultarPoder'
 
         102:
           description: Poder não encontrado(a).
@@ -665,10 +665,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: object
+                $ref: '#/components/schemas/ResultadoConsultarPoder'
             application/json:
               schema:
-                type: object 
+                $ref: '#/components/schemas/ResultadoConsultarPoder'
 
         102:
           description: Poder não encontrado(a).
@@ -696,10 +696,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: object
+                $ref: '#/components/schemas/ResultadoConsultarEsfera'
             application/json:
               schema:
-                type: object 
+                $ref: '#/components/schemas/ResultadoConsultarEsfera'
 
         102:
           description: Esfera não encontrado(a).
@@ -736,10 +736,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: object
+                $ref: '#/components/schemas/ResultadoConsultarEsfera'
             application/json:
               schema:
-                type: object 
+                $ref: '#/components/schemas/ResultadoConsultarEsfera'
 
         102:
           description: Esfera não encontrado(a).
@@ -1181,6 +1181,25 @@ components:
         ativo: 
           type: string
 
+    Poder:
+      type: object
+      properties:
+        codigoEsfera:
+          type: integer 
+        descricaoEsfera:
+          type: string
+        ativo:
+          type: string
+
+    Esfera:
+      type: object
+      properties:
+        codigoPoder:
+          type: integer 
+        descricaoPoder:
+          type: string
+        ativo:
+          type: string
 
     ResultadoConsultarOrgaosEntidadesResumida:
       $ref: '#/components/schemas/ResultadoConsultarEstruturaOrganizacionalResumida'
@@ -1231,3 +1250,27 @@ components:
           $ref: '#/components/schemas/SubNaturezaJuridica'
       xml:
         name: resultadoConsultarSubNaturezaJuridica
+
+    ResultadoConsultarPoder:
+      type: object
+      properties:
+        servico:
+          $ref: '#/components/schemas/Servico'
+        poder:
+          type: array
+          items:
+            $ref: '#/components/schemas/Poder'     
+      xml:
+        name: resultadoConsultarPoder
+
+    ResultadoConsultarEsfera:
+      type: object
+      properties:
+        servico:
+          $ref: '#/components/schemas/Servico'
+        esfera:
+          type: array
+          items:
+            $ref: '#/components/schemas/Esfera'                   
+      xml:
+        name: resultadoConsultarEsfera
