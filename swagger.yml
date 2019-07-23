@@ -911,10 +911,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: object
+                $ref: '#/components/schemas/ResultadoConsultarVersaoUnidade'
             application/json:
               schema:
-                type: object 
+                $ref: '#/components/schemas/ResultadoConsultarVersaoUnidade'
 
         102:
           description: Unidade Organizacional não encontrado(a).
@@ -954,10 +954,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: object
+                $ref: '#/components/schemas/resultadoConsultarUnidadesAlteradasOrgao'
             application/json:
               schema:
-                type: object 
+                $ref: '#/components/schemas/resultadoConsultarUnidadesAlteradasOrgao'
 
         102:
           description: Unidade Organizacional não encontrado(a).
@@ -1236,6 +1236,22 @@ components:
         ativo:
           type: string
 
+    TipoVersao:
+      type: object
+      properties:
+        versaoAnterior: 
+          type: string
+        versaoPosterior: 
+          type: string
+        versaoConsulta: 
+          type: string
+        dataVersaoAnterior: 
+          type: string
+        dataVersaoPosterior: 
+          type: string
+        dataVersaoConsulta: 
+          type: string
+
     ResultadoConsultarOrgaosEntidadesResumida:
       $ref: '#/components/schemas/ResultadoConsultarEstruturaOrganizacionalResumida'
       xml:
@@ -1333,3 +1349,27 @@ components:
             $ref: '#/components/schemas/CategoriaUnidade'    
       xml:
         name: resultadoConsultarCategoriaUnidade
+
+    ResultadoConsultarVersaoUnidade:
+      type: object
+      properties:
+        servico:
+          $ref: '#/components/schemas/Servico'
+        tipoVersao:
+          type: array
+          items:
+            $ref: '#/components/schemas/TipoVersao'      
+      xml:
+        name: resultadoConsultarVersaoUnidade
+
+    ResultadoConsultarUnidadesAlteradasOrgao:
+      type: object
+      properties:
+        servico:
+          $ref: '#/components/schemas/Servico'
+        unidades:
+          type: array
+          items:
+            $ref: '#/components/schemas/Unidade' 
+      xml:
+        name: resultadoConsultarUnidadesAlteradasOrgao
