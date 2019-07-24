@@ -54,7 +54,7 @@ paths:
         description: Código da Unidade Organizacional somente do tipo Órgão ou Entidade
         schema:
           type: string
-          default: 244
+          default: 72084
       - name: RetornarOrgaoEntidadeVinculados
         in: query
         description: Parâmetro para escolher **SIM** se retorna os órgãos vinculados
@@ -117,7 +117,7 @@ paths:
         description: Código da Unidade Organizacional somente do tipo Órgão ou Entidade
         schema:
           type: string
-          default: 244
+          default: 72084
       - name: RetornarOrgaoEntidadeVinculados
         in: query
         description: Parâmetro para escolher **SIM** se retorna os órgãos vinculados
@@ -162,7 +162,7 @@ paths:
         required: true
         schema:
           type: string
-          default: 244
+          default: 72084
       - name: retornarOrgaoEntidadeVinculados
         in: query
         schema:
@@ -275,7 +275,7 @@ paths:
         required: true
         schema:
           type: string
-          default: 244
+          default: 72084
       - name: versaoConsulta
         in: query
         description: Versão específica da Unidade Organizacional, se não informado
@@ -310,7 +310,7 @@ paths:
         required: true
         schema:
           type: string
-          default: 244
+          default: 72084
       responses:
         200:
           description: OK
@@ -344,7 +344,7 @@ paths:
         required: true
         schema:
           type: string
-          default: 244
+          default: 72084
       - name: versaoConsulta
         in: query
         description: Versão específica da Unidade Organizacional, se não informado
@@ -386,7 +386,7 @@ paths:
         required: true
         schema:
           type: string
-          default: 244
+          default: 72084
       responses:
         200:
           description: OK
@@ -418,7 +418,7 @@ paths:
         required: true
         schema:
           type: string
-          default: 244
+          default: 72084
       responses:
         200:
           description: OK
@@ -899,7 +899,7 @@ paths:
         required: true
         schema:
           type: string
-          default: 244
+          default: 72084
       - name: versaoConsulta
         in: query
         description: Versão da Unidade Organizacional de acordo com definido em TipoVersao.
@@ -941,7 +941,7 @@ paths:
         required: true
         schema:
           type: string
-          default: 244
+          default: 72084
       - name: versaoConsulta
         in: query
         description: Versão da Unidade Organizacional de acordo com definido em TipoVersao.
