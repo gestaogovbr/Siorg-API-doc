@@ -1054,7 +1054,6 @@ components:
     SubNaturezaJuridica:
       type: object
       properties:
-<<<<<<< HEAD
         codigoNaturezaJuridica: 
           type: string
         codigoSubNaturezaJuridica:
@@ -1063,12 +1062,6 @@ components:
           type: string
         ativo:
           type: string
-=======
-        codigoNaturezaJuridica: string
-        codigoSubNaturezaJuridica: integer
-        descricaoSubNaturezaJuridica: string
-        ativo: string
->>>>>>> 686ded4504239c088bae1f7687729790fdf1638e
 
     Endereco:
         type: object
