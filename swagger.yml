@@ -386,17 +386,17 @@ paths:
         required: true
         schema:
           type: string
-          default: 72084
+          default: 215360
       responses:
         200:
           description: OK
           content:
             application/xml:
               schema:
-                type: object
+                $ref: '#/components/schemas/ResultadoComposicaoColegiadoResumida'
             application/json:
               schema:
-                type: object 
+                $ref: '#/components/schemas/ResultadoComposicaoColegiadoResumida'
 
         102:
           description: Unidade Organizacional não encontrado(a).
@@ -418,17 +418,17 @@ paths:
         required: true
         schema:
           type: string
-          default: 72084
+          default: 215360
       responses:
         200:
           description: OK
           content:
             application/xml:
               schema:
-                type: object
+                $ref: '#/components/schemas/ResultadoComposicaoColegiadoCompleta'
             application/json:
               schema:
-                type: object 
+                $ref: '#/components/schemas/ResultadoComposicaoColegiadoCompleta'
 
         102:
           description: Unidade Organizacional não encontrado(a).
@@ -1373,3 +1373,32 @@ components:
             $ref: '#/components/schemas/Unidade' 
       xml:
         name: resultadoConsultarUnidadesAlteradasOrgao
+
+
+  ResultadoComposicaoColegiadoResumida:
+    type: object
+    properties:
+      servico:
+        $ref: '#/components/schemas/Servico'
+      atoNormativo:
+        $ref: '#/components/schemas/AtoNormativo'
+      integranteColegiadoResumido:
+        type: array
+        items:
+          type: string
+    xml:
+      name: resultadoComposicaoColegiadoResumida
+
+  ResultadoComposicaoColegiadoCompleta:
+    type: object
+    properties:
+      servico:
+        $ref: '#/components/schemas/Servico'
+      atoNormativo:
+        $ref: '#/components/schemas/AtoNormativo'
+      integranteColegiadoCompleto:
+        type: array
+        items:
+          type: string
+    xml:
+      name: resultadoComposicaoColegiadoCompleta
