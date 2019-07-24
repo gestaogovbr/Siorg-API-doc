@@ -282,7 +282,7 @@ paths:
           retorna versão atual da unidade.
         schema:
           type: string
-          default: 125.0.0
+          default: 116.0.0
       responses:
         200:
           description: OK
@@ -351,7 +351,7 @@ paths:
           retorna versão atual da unidade.
         schema:
           type: string
-          default: 125.0.0
+          default: 116.0.0
       responses:
         200:
           description: OK
