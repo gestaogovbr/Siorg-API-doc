@@ -1,10 +1,9 @@
 openapi: 3.0.0
 info:
   description: |
-    O órgão gestor do SIORG é o Ministério da Economia – ME, por meio da Secretaria de Gestão - SEGES. 
-    
-    O SIORG é uma ferramenta que agiliza as informações organizacionais e permite a gestão das políticas e diretrizes definidas pelo Governo Federal, proporcionando maior transparência para a sociedade. Organiza e publiciza informações sobre as estruturas, competências, finalidades, jurisdição e histórico legal dos órgãos da Administração Federal segundo os preceitos da Lei de Acesso à Informação.
-   
+    O órgão gestor do SIORG é o Ministério da Economia - ME, por meio da Secretaria de Gestão - SEGES. 
+
+    O Sistema de Organização e Inovação Institucional – SIORG, mantém atualizado o cadastro oficial dos Órgãos e Entidades da administração direta, autárquica e fundacional do Poder Executivo Federal, com suas estruturas organizacionais e respectivos cargos em comissão e funções de confiança alocados. Os serviços aqui disponibilizados proporcionam maior transparência para a sociedade garantindo amplo acesso às informações de seu cadastro oficial. 
   version: "1.0.0"
   title: API - SIORG
   termsOfService: 'https://siorg.planejamento.gov.br/siorg-cidadao-webapp/pages/treinamento/material_apoio.jsf'
