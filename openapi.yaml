@@ -10,6 +10,7 @@ info:
   contact:
     email: seges.cginf@economia.gov.br
 servers:
+- url: https://estruturaorganizacional.dados.gov.br/doc
 - url: http://estruturaorganizacional.dados.gov.br/doc
 tags:
 - name: Consultas de Estrutura Organizacional
