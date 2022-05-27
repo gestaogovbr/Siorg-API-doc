@@ -6,7 +6,7 @@ info:
     O Sistema de Organização e Inovação Institucional – SIORG, mantém atualizado o cadastro oficial dos Órgãos e Entidades da administração direta, autárquica e fundacional do Poder Executivo Federal, com suas estruturas organizacionais e respectivos cargos em comissão e funções de confiança alocados. Os serviços aqui disponibilizados proporcionam maior transparência para a sociedade garantindo amplo acesso às informações de seu cadastro oficial. 
   version: "1.0.0"
   title: API - SIORG
-  termsOfService: 'https://siorg.planejamento.gov.br/siorg-cidadao-webapp/pages/treinamento/material_apoio.jsf'
+  termsOfService: 'https://www.gov.br/economia/pt-br/assuntos/gestao/estruturas-organizacionais/'
   contact:
     email: seges.cginf@economia.gov.br
 servers:
