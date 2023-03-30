@@ -3,12 +3,19 @@ info:
   description: |
     O órgão gestor do SIORG é o Ministério da Economia - ME, por meio da Secretaria de Gestão - SEGES. 
 
-    O Sistema de Organização e Inovação Institucional – SIORG, mantém atualizado o cadastro oficial dos Órgãos e Entidades da administração direta, autárquica e fundacional do Poder Executivo Federal, com suas estruturas organizacionais e respectivos cargos em comissão e funções de confiança alocados. Os serviços aqui disponibilizados proporcionam maior transparência para a sociedade garantindo amplo acesso às informações de seu cadastro oficial. 
+    O Sistema de Organização e Inovação Institucional – SIORG, mantém atualizado o cadastro oficial dos Órgãos 
+    e Entidades da administração direta, autárquica e fundacional do Poder Executivo Federal, 
+    com suas estruturas organizacionais e respectivos cargos em comissão e funções de confiança alocados. 
+    Os serviços aqui disponibilizados proporcionam maior transparência para a sociedade garantindo amplo acesso 
+    às informações de seu cadastro oficial. 
+    
+    Para uma melhor utilização da API, alguns navegadores necessitam da importação de certificados do SERPRO. Os certificados
+        encontram-se no link <a href='https://certificados.serpro.gov.br/serprossl/ifr-certificate-chain'> aqui </a>.
   version: "1.0.0"
   title: API - SIORG
   termsOfService: 'https://www.gov.br/economia/pt-br/assuntos/gestao/estruturas-organizacionais/'
   contact:
-    email: seges.cginf@economia.gov.br
+    email: seges.cginf@economia.gov.br 
 servers:
 - url: https://estruturaorganizacional.dados.gov.br/doc
 - url: http://estruturaorganizacional.dados.gov.br/doc
@@ -31,7 +38,7 @@ paths:
         deve-se informar no parâmetro de “RetornarOrgaoEntidadeVinculados” em conjunto
         com o “CodigoUnidade” e todas as unidades organizacionais dos órgãos e entidades
         vinculadas são retornados também. Se for passado “RetornarOrgaoEntidadeVinculados”
-        deve-se passar o parâmetro de “CodigoUnidade” também.
+        deve-se passar o parâmetro de “CodigoUnidade” também. 
       operationId: EstruturaOrganizacionalResumida
       parameters:
       - name: codigoPoder
